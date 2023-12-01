@@ -10,8 +10,8 @@ const BookSchema = new Schema({
   genre: { type: String, required: true },
 });
 
-// el id no deberia definirse para cada Schema
-
 const Book = mongoose.model("Book", BookSchema);
 
 export { Book };
+
+// el id no deberia definirse para cada Schema
