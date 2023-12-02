@@ -65,4 +65,4 @@ const Author = mongoose.model("Author", AuthorSchema);
 export { Author };
 
 
-// agregar a la imagen del modelo author los 2 campos virtuales extra
+// agregar a la imagen del modelo author los 2 campos virtuales

@@ -1,6 +1,6 @@
 import express from "express";
 import { mongoconexion } from "../config/mongo.conexion.js";
-import routerUsuarios from "./routes/usuarios.routes.js";
+import routerAuthor from "./routes/author.routes.js";
 
 const app = express();
 
@@ -11,6 +11,6 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.status(200).send("app up!");
 });
-app.use(routerUsuarios);
+app.use(routerAuthor);
 
 export { app };

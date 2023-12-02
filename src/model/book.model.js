@@ -14,4 +14,4 @@ const Book = mongoose.model("Book", BookSchema);
 
 export { Book };
 
-// el id no deberia definirse para cada Schema
+// el id no deberia definirse para cada Schema en vez de utilizar uno autogenerador por Mongo

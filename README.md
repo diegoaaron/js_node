@@ -60,9 +60,10 @@ Explicación de la estructura propuesta:
  - validar que **nodemon** este instalado de forma global.
 
 2. modelo (model)
- - configurar el archivo `config/database.js`.
+ - configurar el archivo `config/database.conexion.js`.
  - configurar la conexión de la base de datos en el archivo `app.js`.
- - crear los modelos que utilizara la app (podemos gudar una imagen de la interacción de los modelos).
+ - crear los modelos que utilizara la app.
+  - podemos guardar una imagen que diagrame de la interacción de los modelos.
 
 3. Controlador (controller)
  - crear las funciones CRUD para cada modelo definido.
@@ -71,7 +72,8 @@ Explicación de la estructura propuesta:
  - Generar las rutas que enlacen las URL con sus respectivas funciones controladoras.
 
 5. Testing
- - Generar y probar funciones de testing para las diferentes funciones controladoras y rutas.
+ - probar todas las rutas creadas a través de Postman
+ - Generar y ejecutar funciones de testing para las diferentes funciones controladoras y rutas.
 
 **complemento** 
 
