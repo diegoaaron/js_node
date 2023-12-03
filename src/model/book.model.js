@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const BookSchema = new Schema({
-  title: { type: String, require },
+  title: { type: String, require: true },
   author: [{ type: Schema.Types.ObjectId, required: true, ref: "Author" }],
   summary: { type: String, required: true },
   isbn: { type: String, required: true },
