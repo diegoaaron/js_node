@@ -1,5 +1,11 @@
 import express from "express";
-import { addBook } from "../controller/book.controller.js";
+import {
+  addBook,
+  readAllBooks,
+  readUniqueBook,
+  putUpdateBook,
+  deleteBook,
+} from "../controller/book.controller.js";
 
 const router = express.Router();
 
@@ -7,8 +13,22 @@ const router = express.Router();
 
 router.post("/addbook", addBook);
 
-// create author
+// read all books
 
-// router.post("/addauthor", addAuthor);
+router.get("/readallbooks", readAllBooks);
+
+// read unique book
+
+router.get("/readuniquebook/:id", readUniqueBook);
+
+// update book with PUT
+
+router.put("/updatebook/:id", putUpdateBook);
+
+// update book with PATCH
+
+// delete book
+
+router.delete("/deletebook/:id", deleteBook);
 
 export default router;
