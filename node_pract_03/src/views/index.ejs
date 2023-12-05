@@ -1,0 +1,20 @@
+<%- include('partials/header'); %>
+    <h2><%= title %></h2>
+
+    <% if (isActive){ %>
+        <p>El servidor esta activo</p>
+    <% } else { %>
+        <p>El servidor esta inactivo</p>
+    <% } %>
+
+    <%= new Date() %>
+
+    <ul>
+
+        <% for(let i = 0; i < users.length; i++) { %>
+            <li><%= users[i].id  %> <%= users[i].name  %> <%= users[i].lastname  %></li>
+        <% } %>
+
+    </ul>
+
+<%- include('partials/footer'); %>
