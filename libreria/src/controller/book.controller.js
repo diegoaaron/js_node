@@ -71,7 +71,7 @@ const putUpdateBook = async function (req, res) {
   }
 };
 
-// update Author with PATCH
+// update Book with PATCH
 
 // delete Book
 
@@ -84,17 +84,5 @@ const deleteBook = async function (req, res) {
     res.status(500).send(error);
   }
 };
-
-// delete Author
-
-// const deleteAuthor = async function (req, res) {
-//     try {
-//       let { id } = req.params;
-//       const authorDeleted = await Author.findOneAndDelete({ _id: id });
-//       res.status(200).send(authorDeleted);
-//     } catch (error) {
-//       res.status(500).send(error);
-//     }
-//   };
 
 export { addBook, readAllBooks, readUniqueBook, putUpdateBook, deleteBook };
