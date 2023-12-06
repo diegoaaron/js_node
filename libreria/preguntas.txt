@@ -1,4 +1,0 @@
-los modelos deberian tener definido un campo para su id o utilizar el generado por defecto a través de mongoose?
-rpta: para la mayoria de casos se puede dejar que mongoose cree una automaticamente, podemos definir uno personalizado, especificando el campo _id pero depende más que todo de los requerimientos de la aplicación. 
-
-actual: seguir con el punto 2 con el modelo "book.model.js"
