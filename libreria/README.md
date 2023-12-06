@@ -72,7 +72,6 @@ Explicación de la estructura propuesta:
  - Generar las rutas que enlacen las URL con sus respectivas funciones controladoras.
 
 5. Testing
- - probar todas las rutas creadas a través de Postman
  - Generar y ejecutar funciones de testing para las diferentes funciones controladoras y rutas.
 
 **complemento** 
