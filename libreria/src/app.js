@@ -4,6 +4,7 @@ import { mongoconexion } from "../config/mongo.conexion.js";
 // routes
 import routerAuthor from "./routes/author.routes.js";
 import routerBook from "./routes/book.routes.js";
+import routerBookInstace from "./routes/bookinstance.routes.js";
 
 const app = express();
 
@@ -16,5 +17,6 @@ app.get("/", (req, res) => {
 });
 app.use(routerAuthor);
 app.use(routerBook);
+app.use(routerBookInstace);
 
 export { app };

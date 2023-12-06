@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const BookInstanceSchema = new Schema({
   book: { type: Schema.Types.ObjectId, required: true, ref: "Book" },
-  imprint: { type: Number, required: true }, // numero de ejemplar (la biblioteca puede haber comprado 10 ejemplares de un mismo libro para distribuir)
+  imprint: { type: Number, required: true }, // numero de ejemplar (la biblioteca puede haber comprado 10 ejemplares de un mismo libro para prestar)
   status: {
     type: String,
     required: true,
@@ -18,4 +18,4 @@ const BookInstance = mongoose.model("BookInstance", BookInstanceSchema);
 
 export { BookInstance };
 
-// agregar los campos al diagrama de la bd documental
+// agregar los campos pendientes al diagrama (imagen) de la bd documental

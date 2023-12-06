@@ -13,7 +13,7 @@ const addBook = async function (req, res) {
       genre,
     });
     await book.save();
-    console.log(`Se ha generado el nuevo usuario con ID: ${book._id}`);
+    console.log(`Se ha generado el nuevo libro con ID: ${book._id}`);
     res.status(200).send(book);
   } catch (error) {
     res.status(500).send(error);
