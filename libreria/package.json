@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon ./index.js",
-    "test": "jest"
+    "test": "ava"
   },
   "keywords": [],
   "author": "diego aaron",
