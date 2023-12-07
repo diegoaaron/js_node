@@ -14,7 +14,8 @@ test("foo", (t) => {
   t.pass();
 });
 
-test("bar", async (t) => {
-  const bar = Promise.resolve("bar");
-  t.is(await bar, "bar");
+test("get /", async (t) => {
+  const response = await fetch("http://localhost:3000/");
+  t.is(response.status, 200);
+  t.is(response.body.text(), "app up!");
 });
