@@ -11,3 +11,5 @@
 - [Headerparser Microservice](https://github.com/diegoaaron/js_node/tree/master/freecodecamp_api/headerparser)
 
 - [Exercisetracker Microservice](https://github.com/diegoaaron/js_node/tree/master/freecodecamp_api/exercisetracker)
+
+- [Filemetadata Microservice](https://github.com/diegoaaron/js_node/tree/master/freecode_api/filemetadata)
