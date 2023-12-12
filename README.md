@@ -2,14 +2,17 @@
 
 ### 📝 Descripción
 
-Ejercicios sobre scripts con JS o projectos con Node y Express.
+Ejercicios sobre scripts utilizando JavaScript o projectos con Node y Express.
 
-### 📒 Libreria
+### 📒 Contenido
 
 Projecto Node con Express que simula una biblioteca.
+
+[Curso ]
 
 ### ⚙️ Referencias
 
 Información de referencia para los ejercicios.
 
-* [xxxx](#)
+* [Curso API Freecodecamp](https://www.freecodecamp.org/learn/back-end-development-and-apis/)
+* [Curso Interview Prep](https://www.freecodecamp.org/learn/coding-interview-prep/)
