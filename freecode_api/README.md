@@ -8,12 +8,12 @@ Curso que explica los elementos básicos para crear un API utilizando Node.js y 
 
 Solución de los proyectos finales para aprobar el curso
 
-- [Timestamp Microservice](https://github.com/diegoaaron/js_node/tree/master/freecodecamp_api_course/timestamp)
+- [Timestamp](https://github.com/diegoaaron/js_node/tree/master/freecodecamp_api_course/timestamp)
 
-- [Urlshortner Microservice](https://github.com/diegoaaron/js_node/tree/master/freecodecamp_api/urlshortener)
+- [Urlshortner](https://github.com/diegoaaron/js_node/tree/master/freecodecamp_api/urlshortener)
 
-- [Headerparser Microservice](https://github.com/diegoaaron/js_node/tree/master/freecodecamp_api/headerparser)
+- [Headerparser](https://github.com/diegoaaron/js_node/tree/master/freecodecamp_api/headerparser)
 
-- [Exercisetracker Microservice](https://github.com/diegoaaron/js_node/tree/master/freecodecamp_api/exercisetracker)
+- [Exercisetracker](https://github.com/diegoaaron/js_node/tree/master/freecodecamp_api/exercisetracker)
 
-- [Filemetadata Microservice](https://github.com/diegoaaron/js_node/tree/master/freecode_api/filemetadata)
+- [Filemetadata](https://github.com/diegoaaron/js_node/tree/master/freecode_api/filemetadata)
