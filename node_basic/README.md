@@ -14,6 +14,3 @@
 
 - [Ejercicio 5](tuto_05/)
 - [NODE, EXPRESS y MYSQL | APLICACION DE EJEMPLO PARA TU PORTFOLIO](https://youtu.be/U5C_VbKCaIc)
-
-- [Ejercicio 6](tuto_06/)
-- [Nodejs Curso Práctico desde Cero (Javascript en el Backend)](https://youtu.be/i3OdKwuBjeM)
