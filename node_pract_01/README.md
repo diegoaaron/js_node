@@ -6,14 +6,14 @@
 - [Ejercicio 2](tuto_02/)
 - [Nodejs Curso Práctico desde Cero (Javascript en el Backend)](https://youtu.be/i3OdKwuBjeM)
 
-- [Ejercicio 2](tuto_03/)
+- [Ejercicio 3](tuto_03/)
+- [Express Framework de Nodejs, Curso para principiantes Javascript en el backend](https://youtu.be/JmJ1WUoUIK4)
+
+- [Ejercicio 4](tuto_04/)
 - [Nodejs Curso Práctico desde Cero (Javascript en el Backend)](https://youtu.be/i3OdKwuBjeM)
 
-- [Ejercicio 2](tuto_04/)
+- [Ejercicio 5](tuto_05/)
 - [Nodejs Curso Práctico desde Cero (Javascript en el Backend)](https://youtu.be/i3OdKwuBjeM)
 
-- [Ejercicio 2](tuto_05/)
-- [Nodejs Curso Práctico desde Cero (Javascript en el Backend)](https://youtu.be/i3OdKwuBjeM)
-
-- [Ejercicio 2](tuto_06/)
+- [Ejercicio 6](tuto_06/)
 - [Nodejs Curso Práctico desde Cero (Javascript en el Backend)](https://youtu.be/i3OdKwuBjeM)
