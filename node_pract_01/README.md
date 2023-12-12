@@ -1,12 +1,7 @@
-# Node.js
+## Ejercicios básicos de Node.js
 
-## Tutorial 1
+- [Ejercicio 1](tuto_01/)
+- [Aprende Node.js y Express - Curso desde Cero](https://www.youtube.com/watch?v=1hpc70_OoAg)
 
-Tutorial básico de Node.js
-
-## Fuente
-
-Tutorial de de FreeCodeCamp
-
-* [Aprende Node.js y Express - Curso desde Cero](https://www.youtube.com/watch?v=1hpc70_OoAg)
-
+- [Ejercicio 2](#)
+- [Aprende Node.js y Express - Curso desde Cero](https://www.youtube.com/watch?v=1hpc70_OoAg)
