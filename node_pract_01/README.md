@@ -13,7 +13,7 @@
 - [Nodejs MySQL REST API, Desde cero a Despliegue](https://youtu.be/3dSkc-DIM74)
 
 - [Ejercicio 5](tuto_05/)
-- [Nodejs Curso Práctico desde Cero (Javascript en el Backend)](https://youtu.be/i3OdKwuBjeM)
+- [NODE, EXPRESS y MYSQL | APLICACION DE EJEMPLO PARA TU PORTFOLIO](https://youtu.be/U5C_VbKCaIc)
 
 - [Ejercicio 6](tuto_06/)
 - [Nodejs Curso Práctico desde Cero (Javascript en el Backend)](https://youtu.be/i3OdKwuBjeM)
