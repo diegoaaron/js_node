@@ -10,7 +10,7 @@
 - [Express Framework de Nodejs, Curso para principiantes Javascript en el backend](https://youtu.be/JmJ1WUoUIK4)
 
 - [Ejercicio 4](tuto_04/)
-- [Nodejs Curso Práctico desde Cero (Javascript en el Backend)](https://youtu.be/i3OdKwuBjeM)
+- [Nodejs MySQL REST API, Desde cero a Despliegue](https://youtu.be/3dSkc-DIM74)
 
 - [Ejercicio 5](tuto_05/)
 - [Nodejs Curso Práctico desde Cero (Javascript en el Backend)](https://youtu.be/i3OdKwuBjeM)
