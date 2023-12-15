@@ -1,7 +1,7 @@
 {
   "name": "libreria",
   "version": "1.0.0",
-  "description": "CRUD de práctica 02",
+  "description": "CRUD Libreria",
   "main": "index.js",
   "type": "module",
   "scripts": {

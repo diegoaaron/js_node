@@ -43,12 +43,11 @@ Explicación de la estructura propuesta:
   - **`models/`:** Contiene los modelos (estructuras) de datos de tu aplicación, cada uno representa una entidad.
   - **`routes/`:** Contiene las rutas de tu aplicación. Cada archivo de ruta está asociado con un controlador
   - **`middleware/`:** Contiene archivos que procesan las solicitudes antes de que lleguen a los controladores. 
-  - **`app.js`:** Archivo principal de configuración de Express.
+  - **`app.js`:** Archivo principal de la configuración de Express.
 
 - **`testing/`:** Contiene archivos de testing para la app.
 
 - **`.env`:** Configuración de variables de entorno.
-- **`.gitignore`:** Configuración de archivos y carpetas que no se registraran en git 
-- **`index.js`:** Punto de entrada de la aplicación donde se inicia el servidor Express.
+- **`.gitignore`:** Configuración de archivos y carpetas que no se registraran en git.
+- **`index.js`:** Script que inicia el servidor Express.
 - **`package.json`:** Archivo de configuración de Node.js que incluye dependencias, scripts, y otra información relevante.
-
