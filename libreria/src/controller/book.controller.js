@@ -1,4 +1,4 @@
-import { Book } from "../model/book.model.js";
+import { Book } from "../model/libro.model.js";
 
 // create Book
 
