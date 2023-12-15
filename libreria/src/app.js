@@ -2,7 +2,7 @@ import express from "express";
 import { mongoconexion } from "../config/mongo.conexion.js";
 
 // routes
-import routerAuthor from "./routes/author.routes.js";
+import routerAuthor from "./routes/autor.routes.js";
 import routerBook from "./routes/book.routes.js";
 import routerBookInstace from "./routes/bookinstance.routes.js";
 

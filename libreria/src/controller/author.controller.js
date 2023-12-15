@@ -1,4 +1,4 @@
-import { Author } from "../model/author.model.js";
+import { Author } from "../model/autor.model.js";
 
 // create Author
 
