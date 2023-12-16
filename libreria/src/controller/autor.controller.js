@@ -1,6 +1,6 @@
-import { Author } from "../model/autor.model.js";
+import { Autor } from "../model/autor.model.js";
 
-// create Author
+// create Autor
 
 const addAuthor = async function (req, res) {
   try {

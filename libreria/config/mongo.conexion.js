@@ -12,4 +12,12 @@ async function mongoconexion(url) {
 
 mongoconexion(urlmongoconexion);
 
-export { mongoconexion };
+async function mongoconexionclose() {
+  try {
+    await mongoose.connection.close();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export { mongoconexion, mongoconexionclose };
