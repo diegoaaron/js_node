@@ -9,9 +9,9 @@ const LibroSchema = new Schema({
   isbn: { type: String, required: true },
   serie: { type: String, required: true },
   genero: [{ type: String, required: true }],
+  estado: { type: String, enum: ["disponible", "vendido"], default: "disponible" },
 });
 
 const Libro = mongoose.model("Libro", LibroSchema);
 
 export { Libro };
-

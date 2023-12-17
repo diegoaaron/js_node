@@ -15,6 +15,7 @@ mongoconexion(urlmongoconexion);
 async function mongoconexionclose() {
   try {
     await mongoose.connection.close();
+    console.log("conexion cerrada ;(");
   } catch (error) {
     console.log(error);
   }
