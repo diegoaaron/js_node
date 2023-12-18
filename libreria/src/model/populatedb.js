@@ -163,12 +163,15 @@ async function registrarVentaLibro(index, nombreCliente, libro, correo, basicfec
   }
 }
 
-registrarVentaLibro(
-  0,
-  "diego aaron",
-  ["657e40e28ed85a1ac22c9ae1", "657e4145fb865ea610ad7483"],
-  "diego@gmail.com",
-  ""
-);
+async function registrandoVentaLibros() {
+  console.log("Iniciando con el registro de venta de libros...");
+  await Promise.all([
+    registrarVentaLibro(0, "Luis vasquez", [libros[4], libros[5]], "luis@gmail.com", ""),
+    registrarVentaLibro(1, "Maria Quispe", libros[0], "mar@gmail.com", "2022-10-10"),
+    registrarVentaLibro(2, "Elvira Palomino", libros[2], "elvira@abc.com", "2022-12-05"),
+    registrarVentaLibro(3, "Karin Lino", libros[1], "karin@gmail.com", "2023-05-09"),
+    registrarVentaLibro(4, "Erick Lu", [libros[3], libros[6]], "erick@xyz.com", ""),
+  ]);
+}
 
 // await mongoconexionclose();
