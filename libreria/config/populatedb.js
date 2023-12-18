@@ -1,7 +1,8 @@
-import { mongoconexion, mongoconexionclose } from "../../config/mongo.conexion.js";
-import { Autor } from "../model/autor.model.js";
-import { Libro } from "../model/libro.model.js";
-import { VentaLibro } from "../model/ventalibro.model.js";
+import { urlmongoconexion } from "./config.js";
+import { openmongoconexion, closemongoconexion } from "./mongo.conexion.js";
+import { Autor } from "../src/model/autor.model.js";
+import { Libro } from "../src/model/libro.model.js";
+import { VentaLibro } from "../src/model/ventalibro.model.js";
 
 // carga de data de prueba
 // node -r dotenv/config populatedb.js dotenv_config_path=/home/diego/Documentos/migithub/js_node/libreria/.env dotenv_config_debug=true
@@ -9,21 +10,6 @@ import { VentaLibro } from "../model/ventalibro.model.js";
 let autores = [];
 let libros = [];
 let ventalibros = [];
-
-// funcion principal
-
-async function main() {
-  console.log("Inicio de registro");
-  await registrandoAutores();
-  await registrandoLibros();
-  await registrandoVentaLibros();
-  await mongoconexionclose();
-  console.log("Fin del registro");
-}
-
-// ejecucion de funcion principal
-
-main();
 
 // funcion que registra cada autor
 
@@ -52,14 +38,16 @@ async function registrarAutor(
 }
 
 async function registrandoAutores() {
-  console.log("Iniciando con el registro de autores...");
+  console.log("Inicio del registro de autores...");
   await Promise.all([
     registrarAutor(0, "Patrick", "Rothfuss", "1973-06-06", ""),
     registrarAutor(1, "Ben", "Bova", "1932-11-8", ""),
     registrarAutor(2, "Isaac", "Asimov", "1920-01-02", "1992-04-06"),
     registrarAutor(3, "Bob", "Billings", "1988-11-02", ""),
     registrarAutor(4, "Jim", "Jones", "1971-12-16", ""),
-  ]);
+  ]).then(() => {
+    console.log(`Fin del registro, autores registrados: ${autores.length}`);
+  });
 }
 
 // funcion que registra cada libro
@@ -159,7 +147,9 @@ async function registrandoLibros() {
       "romanticismo",
       "disponible"
     ),
-  ]);
+  ]).then(() => {
+    console.log(`Fin del registro, libros registrados: ${libros.length}`);
+  });
 }
 
 // funcion que registra cada venta de libro
@@ -191,5 +181,25 @@ async function registrandoVentaLibros() {
     registrarVentaLibro(2, "Elvira Palomino", libros[2], "elvira@abc.com", "2022-12-05"),
     registrarVentaLibro(3, "Karin Lino", libros[1], "karin@gmail.com", "2023-05-09"),
     registrarVentaLibro(4, "Erick Lu", [libros[3], libros[6]], "erick@xyz.com", ""),
-  ]);
+  ]).then(() => {
+    console.log(`Fin del registro, ventas registradas: ${ventalibros.length}`);
+  });
 }
+
+// funcion principal
+
+async function main() {
+  try {
+    await openmongoconexion(urlmongoconexion);
+    await registrandoAutores();
+    await registrandoLibros();
+    await registrandoVentaLibros();
+    await closemongoconexion();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// ejecucion de funcion principal
+
+main();
