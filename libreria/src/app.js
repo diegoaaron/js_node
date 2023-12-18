@@ -1,5 +1,10 @@
 import express from "express";
-import { mongoconexion } from "../config/mongo.conexion.js";
+
+// database
+import { urlmongoconexion } from "./config.js";
+import { openmongoconexion } from "../config/mongo.conexion.js";
+
+openmongoconexion(urlmongoconexion);
 
 // routes
 import routerAuthor from "./routes/autor.routes.js";
@@ -13,7 +18,7 @@ app.use(express.json());
 
 // ruta base
 app.get("/", (req, res) => {
-  res.status(200).send("app up!");
+  res.status(200).send("API up!");
 });
 app.use(routerAuthor);
 app.use(routerBook);
