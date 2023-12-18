@@ -10,6 +10,23 @@ let autores = [];
 let libros = [];
 let ventalibros = [];
 
+// funcion principal
+
+async function main() {
+  console.log("Inicio de registro");
+  await registrandoAutores();
+  await registrandoLibros();
+  await registrandoVentaLibros();
+  await mongoconexionclose();
+  console.log("Fin del registro");
+}
+
+// ejecucion de funcion principal
+
+main();
+
+// funcion que registra cada autor
+
 async function registrarAutor(
   index,
   nombres,
@@ -44,6 +61,8 @@ async function registrandoAutores() {
     registrarAutor(4, "Jim", "Jones", "1971-12-16", ""),
   ]);
 }
+
+// funcion que registra cada libro
 
 async function registrarLibro(
   index,
@@ -143,6 +162,8 @@ async function registrandoLibros() {
   ]);
 }
 
+// funcion que registra cada venta de libro
+
 async function registrarVentaLibro(index, nombreCliente, libro, correo, basicfechaVenta) {
   try {
     let fechaVenta;
@@ -157,7 +178,6 @@ async function registrarVentaLibro(index, nombreCliente, libro, correo, basicfec
     console.log(
       `se registra venta de libro(s) ${ventalibro.nombreCliente} con id: ${ventalibro._id}`
     );
-    await mongoconexionclose();
   } catch (error) {
     console.log(error);
   }
@@ -173,5 +193,3 @@ async function registrandoVentaLibros() {
     registrarVentaLibro(4, "Erick Lu", [libros[3], libros[6]], "erick@xyz.com", ""),
   ]);
 }
-
-// await mongoconexionclose();
