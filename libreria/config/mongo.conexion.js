@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
-import { urlmongoconexion } from "./config.js";
 
-async function mongoconexion(url) {
+async function openmongoconexion(url) {
   try {
     await mongoose.connect(url);
     console.log("conexion establecida!");
@@ -10,9 +9,7 @@ async function mongoconexion(url) {
   }
 }
 
-mongoconexion(urlmongoconexion);
-
-async function mongoconexionclose() {
+async function closemongoconexion() {
   try {
     await mongoose.connection.close();
     console.log("conexion cerrada ;(");
@@ -21,4 +18,4 @@ async function mongoconexionclose() {
   }
 }
 
-export { mongoconexion, mongoconexionclose };
+export { openmongoconexion, closemongoconexion };
