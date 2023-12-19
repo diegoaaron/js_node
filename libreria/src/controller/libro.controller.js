@@ -1,26 +1,28 @@
-import { Book } from "../model/libro.model.js";
+import { Libro } from "../model/libro.model.js";
 
-// create Book
+// create Libro
 
-const addBook = async function (req, res) {
+const addLibro = async function (req, res) {
   try {
-    let { title, author, summary, isbn, genre } = req.body;
-    const book = new Book({
-      title,
-      author,
-      summary,
+    let { autor, titulo, resumen, isbn, serie, genero, estado } = req.body;
+    const libro = new Libro({
+      autor,
+      titulo,
+      resumen,
       isbn,
-      genre,
+      serie,
+      genero,
+      estado,
     });
-    await book.save();
-    console.log(`Se ha generado el nuevo libro con ID: ${book._id}`);
-    res.status(200).send(book);
+    await libro.save();
+    console.log(`Se ha registrado el nuevo libro con ID: ${libro._id}`);
+    res.status(200).send(libro);
   } catch (error) {
     res.status(500).send(error);
   }
 };
 
-// read all Book
+// read all Libros
 
 const readAllBooks = async function (req, res) {
   try {
@@ -42,7 +44,7 @@ const readAllBooks = async function (req, res) {
   }
 };
 
-// read unique Book
+// read unique Libros
 
 const readUniqueBook = async function (req, res) {
   try {
@@ -54,7 +56,7 @@ const readUniqueBook = async function (req, res) {
   }
 };
 
-// update Book with PUT
+// update Libro with PUT
 
 const putUpdateBook = async function (req, res) {
   try {
@@ -71,9 +73,9 @@ const putUpdateBook = async function (req, res) {
   }
 };
 
-// update Book with PATCH
+// update Libro with PATCH
 
-// delete Book
+// delete Libros
 
 const deleteBook = async function (req, res) {
   try {
