@@ -4,15 +4,14 @@ import { Autor } from "../model/autor.model.js";
 
 const addAutor = async function (req, res) {
   try {
-    let { firstName, lastName, email, dateOfBirthday, dateOfDeath } = req.body;
-    dateOfBirthday = new Date(dateOfBirthday);
-    dateOfDeath = new Date(dateOfDeath);
-    const author = new Author({
-      firstName,
-      lastName,
-      email,
-      dateOfBirthday,
-      dateOfDeath,
+    let { nombres, apellidos, fechaNacimiento, fechaMuerte } = req.body;
+    fechaNacimiento = new Date(fechaNacimiento);
+    fechaMuerte = new Date(fechaMuerte);
+    const author = new Autor({
+      nombres,
+      apellidos,
+      fechaNacimiento,
+      fechaMuerte,
     });
     await author.save();
     console.log(`Se ha registrao el autor con ID: ${author._id}`);
@@ -24,19 +23,18 @@ const addAutor = async function (req, res) {
 
 // read all Authors
 
-const readAllAuthors = async function (req, res) {
+const readAllAutores = async function (req, res) {
   try {
     let formatData = [];
-    const allAuthors = await Author.find().sort({ lastName: 1 });
-    formatData = allAuthors.map((author) => {
-      let auth = {};
-      auth.id = author._id;
-      auth.firstName = author.firstName;
-      auth.lastName = author.lastName;
-      auth.email = author.email;
-      auth.dateOfBirthday = author.dateOfBirthday;
-      auth.dateOfDeath = author.dateOfDeath;
-      return auth;
+    const allAuthors = await Autor.find().sort({ lastName: 1 });
+    formatData = allAuthors.map((autor) => {
+      let aut = {};
+      aut.id = autor._id;
+      aut.nombres = autor.nombres;
+      aut.apellidos = autor.apellidos;
+      aut.fechaNacimiento = autor.fechaNacimiento;
+      aut.fechaMuerte = autor.fechaMuerte;
+      return aut;
     });
     res.status(200).send(formatData);
   } catch (error) {
@@ -46,11 +44,11 @@ const readAllAuthors = async function (req, res) {
 
 // read unique Author
 
-const readUniqueAuthor = async function (req, res) {
+const readUniqueAutor = async function (req, res) {
   try {
     let { id } = req.params;
-    const uniqueAuthor = await Author.findById(id);
-    res.status(200).send(uniqueAuthor);
+    const uniqueAutor = await Autor.findById(id);
+    res.status(200).send(uniqueAutor);
   } catch (error) {
     res.status(500).send(error);
   }
@@ -58,18 +56,18 @@ const readUniqueAuthor = async function (req, res) {
 
 // update Author with PUT
 
-const putUpdateAuthor = async function (req, res) {
+const putUpdateAutor = async function (req, res) {
   try {
     let { id } = req.params;
-    let { firstName, lastName, email, dateOfBirthday, dateOfDeath } = req.body;
-    dateOfBirthday = new Date(dateOfBirthday);
-    dateOfDeath = new Date(dateOfDeath);
-    const authorUpdated = await Author.findOneAndUpdate(
+    let { nombres, apellidos, fechaNacimiento, fechaMuerte } = req.body;
+    fechaNacimiento = new Date(fechaNacimiento);
+    fechaNacimiento = new Date(fechaNacimiento);
+    const autorUpdated = await Autor.findOneAndUpdate(
       { _id: id },
-      { firstName, lastName, email, dateOfBirthday, dateOfDeath },
+      { nombres, apellidos, fechaNacimiento, fechaMuerte },
       { new: true }
     );
-    res.status(200).send(authorUpdated);
+    res.status(200).send(autorUpdated);
   } catch (error) {
     res.status(500).send(error);
   }
@@ -79,14 +77,14 @@ const putUpdateAuthor = async function (req, res) {
 
 // delete Author
 
-const deleteAuthor = async function (req, res) {
+const deleteAutor = async function (req, res) {
   try {
     let { id } = req.params;
-    const authorDeleted = await Author.findOneAndDelete({ _id: id });
-    res.status(200).send(authorDeleted);
+    const autorDeleted = await Autor.findOneAndDelete({ _id: id });
+    res.status(200).send(autorDeleted);
   } catch (error) {
     res.status(500).send(error);
   }
 };
 
-export { addAuthor, readAllAuthors, readUniqueAuthor, putUpdateAuthor, deleteAuthor };
+export { addAutor, readAllAutores, readUniqueAutor, putUpdateAutor, deleteAutor };
