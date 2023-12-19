@@ -24,19 +24,19 @@ const addLibro = async function (req, res) {
 
 // read all Libros
 
-const readAllBooks = async function (req, res) {
+const readAllLibros = async function (req, res) {
   try {
     let formatData = [];
-    const allBooks = await Book.find().sort({ title: 1 });
-    formatData = allBooks.map((book) => {
-      let bk = {};
-      bk.id = book._id;
-      bk.title = book.title;
-      bk.author = book.author;
-      bk.summary = book.summary;
-      bk.isbn = book.summary;
-      bk.genre = book.genre;
-      return book;
+    const allLibros = await Libro.find().sort({ title: 1 });
+    formatData = allLibros.map((libro) => {
+      let lib = {};
+      lib.id = libro._id;
+      lib.title = libro.title;
+      lib.author = libro.author;
+      lib.summary = libro.summary;
+      lib.isbn = libro.summary;
+      lib.genre = libro.genre;
+      return lib;
     });
     res.status(200).send(formatData);
   } catch (error) {
