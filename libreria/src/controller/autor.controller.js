@@ -2,7 +2,7 @@ import { Autor } from "../model/autor.model.js";
 
 // create Autor
 
-const addAuthor = async function (req, res) {
+const addAutor = async function (req, res) {
   try {
     let { firstName, lastName, email, dateOfBirthday, dateOfDeath } = req.body;
     dateOfBirthday = new Date(dateOfBirthday);
@@ -15,7 +15,7 @@ const addAuthor = async function (req, res) {
       dateOfDeath,
     });
     await author.save();
-    console.log(`Se ha generado el nuevo usuario con ID: ${author._id}`);
+    console.log(`Se ha registrao el autor con ID: ${author._id}`);
     res.status(200).send(author);
   } catch (error) {
     res.status(500).send(error);
@@ -90,5 +90,3 @@ const deleteAuthor = async function (req, res) {
 };
 
 export { addAuthor, readAllAuthors, readUniqueAuthor, putUpdateAuthor, deleteAuthor };
-
-// pendiente crear funcion para actualización con PATCH
