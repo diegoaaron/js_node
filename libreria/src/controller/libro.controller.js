@@ -79,14 +79,14 @@ const putUpdateLibro = async function (req, res) {
 
 // delete Libros
 
-const deleteBook = async function (req, res) {
+const deleteLibro = async function (req, res) {
   try {
     let { id } = req.params;
-    const bookDeleted = await Book.findOneAndDelete({ _id: id });
-    res.status(200).send(bookDeleted);
+    const libroDeleted = await Libro.findOneAndDelete({ _id: id });
+    res.status(200).send(libroDeleted);
   } catch (error) {
     res.status(500).send(error);
   }
 };
 
-export { addBook, readAllBooks, readUniqueBook, putUpdateBook, deleteBook };
+export { addLibro, readAllLibros, readUniqueLibro, putUpdateLibro, deleteLibro };
