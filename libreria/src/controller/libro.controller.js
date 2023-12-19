@@ -48,11 +48,11 @@ const readAllLibros = async function (req, res) {
 
 // read unique Libros
 
-const readUniqueBook = async function (req, res) {
+const readUniqueLibro = async function (req, res) {
   try {
     let { id } = req.params;
-    const uniqueBook = await Book.findById(id);
-    res.status(200).send(uniqueBook);
+    const uniqueLIbro = await Libro.findById(id);
+    res.status(200).send(uniqueLIbro);
   } catch (error) {
     res.status(500).send(error);
   }
@@ -60,16 +60,16 @@ const readUniqueBook = async function (req, res) {
 
 // update Libro with PUT
 
-const putUpdateBook = async function (req, res) {
+const putUpdateLibro = async function (req, res) {
   try {
     let { id } = req.params;
-    let { title, author, summary, isbn, genre } = req.body;
-    const bookUpdated = await Book.findByIdAndUpdate(
+    let { autor, titulo, resumen, isbn, serie, genero, estado } = req.body;
+    const libroUpdated = await Libro.findByIdAndUpdate(
       { _id: id },
-      { title, author, summary, isbn, genre },
+      { autor, titulo, resumen, isbn, serie, genero, estado },
       { new: true }
     );
-    res.status(200).send(bookUpdated);
+    res.status(200).send(libroUpdated);
   } catch (error) {
     res.status(500).send(error);
   }
