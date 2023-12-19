@@ -2,18 +2,18 @@ import { VentaLibro } from "../model/ventalibro.model.js";
 
 // create VentaLibro
 
-const addBookInstance = async function (req, res) {
+const addVentaLibro = async function (req, res) {
   try {
-    let { book, imprint, status, dueBack } = req.body;
-    const bookInstance = new BookInstance({
-      book,
-      imprint,
-      status,
-      dueBack,
+    let { nombreCliente, libro, correo, fechaVenta } = req.body;
+    const ventaLibro = new VentaLibro({
+      nombreCliente,
+      libro,
+      correo,
+      fechaVenta,
     });
-    await bookInstance.save();
-    console.log(`Se ha generado la venta del libro con ID: ${bookInstance._id}`);
-    res.status(200).send(bookInstance);
+    await ventaLibro.save();
+    console.log(`Se ha generado la venta del libro con ID: ${ventaLibro._id}`);
+    res.status(200).send(ventaLibro);
   } catch (error) {
     res.status(500).send(error);
   }
@@ -21,18 +21,18 @@ const addBookInstance = async function (req, res) {
 
 // read all VentaLibro
 
-const readAllBookInstance = async function (req, res) {
+const readAllVentaLibro = async function (req, res) {
   try {
     let formatData = [];
-    const allBookInstance = await BookInstance.find().sort({ book: 1 });
-    formatData = allBookInstance.map((bookInstance) => {
-      let bkInst = {};
-      bkInst.id = bookInstance._id;
-      bkInst.book = bookInstance.book;
-      bkInst.imprint = bookInstance.imprint;
-      bkInst.status = bookInstance.status;
-      bkInst.dueBack = bookInstance.dueBack;
-      return bkInst;
+    const allVentaLibro = await VentaLibro.find().sort({ book: 1 });
+    formatData = allVentaLibro.map((ventalibro) => {
+      let ventaLib = {};
+      ventaLib.id = ventalibro._id;
+      ventaLib.nombreCliente = ventalibro.nombreCliente;
+      ventaLib.libro = ventalibro.libro;
+      ventaLib.correo = ventalibro.correo;
+      ventaLib.fechaVenta = ventalibro.fechaVenta;
+      return ventaLib;
     });
     res.status(200).send(formatData);
   } catch (error) {
@@ -42,11 +42,11 @@ const readAllBookInstance = async function (req, res) {
 
 // read unique VentaLibro
 
-const readUniqueBookInstance = async function (req, res) {
+const readUniqueVentaLibro = async function (req, res) {
   try {
     let { id } = req.params;
-    const uniqueBookInstance = await BookInstance.findById(id);
-    res.status(200).send(uniqueBookInstance);
+    const uniqueVentaLibro = await VentaLibro.findById(id);
+    res.status(200).send(uniqueVentaLibro);
   } catch (error) {
     res.status(500).send(error);
   }
@@ -54,16 +54,16 @@ const readUniqueBookInstance = async function (req, res) {
 
 // update VentaLibro with PUT
 
-const putUpdateBookInstance = async function (req, res) {
+const putUpdateVentaLibro = async function (req, res) {
   try {
     let { id } = req.params;
-    let { book, imprint, status, dueBack } = req.body;
-    const bookInstanceUpdated = await BookInstance.findByIdAndUpdate(
+    let { nombreCliente, libro, correo, fechaVenta } = req.body;
+    const ventaLibroUpdated = await VentaLibro.findByIdAndUpdate(
       { _id: id },
-      { book, imprint, status, dueBack },
+      { nombreCliente, libro, correo, fechaVenta },
       { new: true }
     );
-    res.status(200).send(bookInstanceUpdated);
+    res.status(200).send(ventaLibroUpdated);
   } catch (error) {
     res.status(500).send(error);
   }
@@ -73,20 +73,20 @@ const putUpdateBookInstance = async function (req, res) {
 
 // delete VentaLibro
 
-const deleteBookInstance = async function (req, res) {
+const deleteVentaLibro = async function (req, res) {
   try {
     let { id } = req.params;
-    const bookInstanceDeleted = await BookInstance.findOneAndDelete({ _id: id });
-    res.status(200).send(bookInstanceDeleted);
+    const ventaLibroDeleted = await ventaLibro.findOneAndDelete({ _id: id });
+    res.status(200).send(ventaLibroDeleted);
   } catch (error) {
     res.status(500).send(error);
   }
 };
 
 export {
-  addBookInstance,
-  readAllBookInstance,
-  readUniqueBookInstance,
-  putUpdateBookInstance,
-  deleteBookInstance,
+  addVentaLibro,
+  readAllVentaLibro,
+  readUniqueVentaLibro,
+  putUpdateVentaLibro,
+  deleteVentaLibro,
 };
