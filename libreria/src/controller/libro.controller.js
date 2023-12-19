@@ -31,11 +31,13 @@ const readAllLibros = async function (req, res) {
     formatData = allLibros.map((libro) => {
       let lib = {};
       lib.id = libro._id;
-      lib.title = libro.title;
-      lib.author = libro.author;
-      lib.summary = libro.summary;
-      lib.isbn = libro.summary;
-      lib.genre = libro.genre;
+      lib.autor = libro.autor;
+      lib.titulo = libro.titulo;
+      lib.resumen = libro.resumen;
+      lib.isbn = libro.isbn;
+      lib.serie = libro.serie;
+      lib.genero = libro.genero;
+      lib.estado = libro.estado;
       return lib;
     });
     res.status(200).send(formatData);
