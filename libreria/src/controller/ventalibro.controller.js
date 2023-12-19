@@ -1,6 +1,6 @@
-import { BookInstance } from "../model/bookinstance.model.js";
+import { VentaLibro } from "../model/ventalibro.model.js";
 
-// create BookInstance
+// create VentaLibro
 
 const addBookInstance = async function (req, res) {
   try {
@@ -12,16 +12,14 @@ const addBookInstance = async function (req, res) {
       dueBack,
     });
     await bookInstance.save();
-    console.log(
-      `Se ha generado la nueva instancia de libro con código: ${bookInstance._id}`
-    );
+    console.log(`Se ha generado la venta del libro con ID: ${bookInstance._id}`);
     res.status(200).send(bookInstance);
   } catch (error) {
     res.status(500).send(error);
   }
 };
 
-// read all BookInstance
+// read all VentaLibro
 
 const readAllBookInstance = async function (req, res) {
   try {
@@ -42,7 +40,7 @@ const readAllBookInstance = async function (req, res) {
   }
 };
 
-// read unique Book
+// read unique VentaLibro
 
 const readUniqueBookInstance = async function (req, res) {
   try {
@@ -54,7 +52,7 @@ const readUniqueBookInstance = async function (req, res) {
   }
 };
 
-// update BookInstance with PUT
+// update VentaLibro with PUT
 
 const putUpdateBookInstance = async function (req, res) {
   try {
@@ -71,7 +69,9 @@ const putUpdateBookInstance = async function (req, res) {
   }
 };
 
-// update BookInstance with PATCH
+// update VentaLibro with PATCH
+
+// delete VentaLibro
 
 const deleteBookInstance = async function (req, res) {
   try {
