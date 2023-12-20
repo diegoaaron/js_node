@@ -1,15 +1,15 @@
 import express from "express";
 
 // database
-import { urlmongoconexion } from "./config.js";
+import { urlmongoconexion } from "../config/config.js";
 import { openmongoconexion } from "../config/mongo.conexion.js";
 
 openmongoconexion(urlmongoconexion);
 
 // routes
-import routerAuthor from "./routes/autor.routes.js";
-import routerBook from "./routes/book.routes.js";
-import routerBookInstace from "./routes/bookinstance.routes.js";
+import routerAutor from "./routes/autor.routes.js";
+import routerLibro from "./routes/libro.routes.js";
+import routerVentaLibro from "./routes/ventalibro.routes.js";
 
 const app = express();
 
@@ -20,8 +20,8 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.status(200).send("API up!");
 });
-app.use(routerAuthor);
-app.use(routerBook);
-app.use(routerBookInstace);
+app.use(routerAutor);
+app.use(routerLibro);
+app.use(routerVentaLibro);
 
 export { app };
