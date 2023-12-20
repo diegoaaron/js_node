@@ -12,7 +12,7 @@ const addVentaLibro = async function (req, res) {
       fechaVenta,
     });
     await ventaLibro.save();
-    console.log(`Se ha generado la venta del libro con ID: ${ventaLibro._id}`);
+    console.log(`Se ha registrado la venta del libro con ID: ${ventaLibro._id}`);
     res.status(200).send(ventaLibro);
   } catch (error) {
     res.status(500).send(error);
@@ -76,7 +76,7 @@ const putUpdateVentaLibro = async function (req, res) {
 const deleteVentaLibro = async function (req, res) {
   try {
     let { id } = req.params;
-    const ventaLibroDeleted = await ventaLibro.findOneAndDelete({ _id: id });
+    const ventaLibroDeleted = await VentaLibro.findOneAndDelete({ _id: id });
     res.status(200).send(ventaLibroDeleted);
   } catch (error) {
     res.status(500).send(error);

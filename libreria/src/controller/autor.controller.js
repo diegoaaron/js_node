@@ -14,7 +14,7 @@ const addAutor = async function (req, res) {
       fechaMuerte,
     });
     await author.save();
-    console.log(`Se ha registrao el autor con ID: ${author._id}`);
+    console.log(`Se ha registrado el nuevo autor con ID: ${author._id}`);
     res.status(200).send(author);
   } catch (error) {
     res.status(500).send(error);
