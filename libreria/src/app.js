@@ -16,12 +16,13 @@ const app = express();
 // midleware
 app.use(express.json());
 
+app.use(routerAutor);
+app.use(routerLibro);
+app.use(routerVentaLibro);
+
 // ruta base
 app.get("/", (req, res) => {
   res.status(200).send("API up!");
 });
-app.use(routerAutor);
-app.use(routerLibro);
-app.use(routerVentaLibro);
 
 export { app };
