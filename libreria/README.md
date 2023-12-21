@@ -45,7 +45,7 @@ Explicación de la estructura propuesta:
   - **`middleware/`:** Contiene archivos que procesan las solicitudes antes de que lleguen a los controladores. 
   - **`app.js`:** Archivo principal de la configuración de Express.
 
-- **`test/`:** Contiene archivos de testing para la app.
+- **`test/`:** Contiene archivos de testing para la app (modelos, controladores y rutas).
 
 - **`.env`:** Configuración de variables de entorno.
 - **`.gitignore`:** Configuración de archivos y carpetas que no se registraran en git.
