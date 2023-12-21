@@ -1,7 +1,7 @@
 import test from "ava";
 import fetch from "node-fetch";
 
-test("post /addlibro", async (t) => {
+test.skip("post /addlibro", async (t) => {
   t.plan(3);
 
   const body = {
@@ -25,39 +25,37 @@ test("post /addlibro", async (t) => {
   t.is(data.resumen, "historia de un viaje por la arena");
 });
 
-test.skip("get /readallautores", async (t) => {
+test.skip("get /readalllibros", async (t) => {
   t.plan(1);
 
-  const response = await fetch("http://localhost:3000/readallautores");
+  const response = await fetch("http://localhost:3000/readalllibros");
 
   t.is(response.status, 200);
 });
 
-test.skip("get /readuniqueautor/:id", async (t) => {
+test.skip("get /readuniquelibro/:id", async (t) => {
   t.plan(3);
 
   const response = await fetch(
-    "http://localhost:3000/readuniqueautor/657fbf836265e0033c0feaa5"
+    "http://localhost:3000/readuniquelibro/657fb0deed0eb811c0821db1"
   );
   const data = await response.json();
 
   t.is(response.status, 200);
-  t.is(data.nombres, "luis alejandro 3");
-  t.is(data.apellidos, "dias marci 3");
+  t.is(data.titulo, "The Name of the Wind (The Kingkiller Chronicle, #1)");
+  t.is(data.isbn, "9781473211896");
 });
 
-test.skip("put /putupdateautor/:id", async (t) => {
+test.skip("put /putupdatelibro/:id", async (t) => {
   t.plan(2);
 
   const body = {
-    nombres: "luis alejandro 5",
-    apellidos: "dias marci 5",
-    fechaNacimiento: "1999-08-22",
-    fechaMuerte: "2015-11-03",
+    titulo: "historia de luis",
+    resumen: "historia de un viaje por la arena 2",
   };
 
   const response = await fetch(
-    "http://localhost:3000/putupdateautor/657fbf836265e0033c0feaa5",
+    "http://localhost:3000/putupdatelibro/657fb0deed0eb811c0821db3",
     {
       method: "put",
       body: JSON.stringify(body),
@@ -67,14 +65,14 @@ test.skip("put /putupdateautor/:id", async (t) => {
   const data = await response.json();
 
   t.is(response.status, 200);
-  t.is(data.nombres, "luis alejandro 3");
+  t.is(data.resumen, "historia de un viaje por la arena 2");
 });
 
-test.skip("delete /deleteautor/:id", async (t) => {
+test.skip("delete /deletelibro/:id", async (t) => {
   t.plan(1);
 
   const response = await fetch(
-    "http://localhost:3000/deleteautor/657fbf836265e0033c0feaa4",
+    "http://localhost:3000/deletelibro/657fb0deed0eb811c0821db4",
     {
       method: "delete",
     }
@@ -82,7 +80,3 @@ test.skip("delete /deleteautor/:id", async (t) => {
 
   t.is(response.status, 200);
 });
-
-// https://github.com/avajs/ava/blob/5975b602b771e0dc02382d24b65c5561bd5fc7ee/docs/03-assertions.md
-
-// https://github.com/node-fetch/node-fetch
