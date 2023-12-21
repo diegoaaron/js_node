@@ -90,6 +90,3 @@ test.skip("delete /deleteautor/:id", async (t) => {
   t.is(response.status, 200);
 });
 
-// https://github.com/avajs/ava/blob/5975b602b771e0dc02382d24b65c5561bd5fc7ee/docs/03-assertions.md
-
-// https://github.com/node-fetch/node-fetch

@@ -52,3 +52,9 @@ Explicación de la estructura propuesta:
 - **`index.js`:** Script que inicia el servidor Express.
 - **`package.json`:** Archivo de configuración de Node.js que incluye dependencias, scripts, y otra información relevante.
 
+### ⚙️ Referencias
+
+Información de referencia en la construcción de la API
+
+* [Test AVA docs](https://github.com/avajs/ava/blob/5975b602b771e0dc02382d24b65c5561bd5fc7ee/docs/03-assertions.md)
+* [Node-Fetch docs](https://github.com/node-fetch/node-fetch)
