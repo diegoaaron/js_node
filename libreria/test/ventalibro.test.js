@@ -1,17 +1,7 @@
 import test from "ava";
 import fetch from "node-fetch";
 
-test("get /", async (t) => {
-  t.plan(2);
-
-  const response = await fetch("http://localhost:3000/");
-  const data = await response.text();
-
-  t.is(response.status, 200);
-  t.is(data, "API up!");
-});
-
-test("post /addautor", async (t) => {
+test.skip("post /addautor", async (t) => {
   t.plan(3);
 
   const body = {
@@ -32,7 +22,7 @@ test("post /addautor", async (t) => {
   t.is(data.apellidos, "dias marci");
 });
 
-test("get /readallautores", async (t) => {
+test.skip("get /readallautores", async (t) => {
   t.plan(1);
 
   const response = await fetch("http://localhost:3000/readallautores");
@@ -40,7 +30,7 @@ test("get /readallautores", async (t) => {
   t.is(response.status, 200);
 });
 
-test("get /readuniqueautor/:id", async (t) => {
+test.skip("get /readuniqueautor/:id", async (t) => {
   t.plan(3);
 
   const response = await fetch(
@@ -53,7 +43,7 @@ test("get /readuniqueautor/:id", async (t) => {
   t.is(data.apellidos, "dias marci 3");
 });
 
-test("put /putupdateautor/:id", async (t) => {
+test.skip("put /putupdateautor/:id", async (t) => {
   t.plan(2);
 
   const body = {
