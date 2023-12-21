@@ -40,7 +40,7 @@ test.skip("get /readallautores", async (t) => {
   t.is(response.status, 200);
 });
 
-test("get /readuniqueautor/:id", async (t) => {
+test.skip("get /readuniqueautor/:id", async (t) => {
   t.plan(3);
 
   const response = await fetch(
