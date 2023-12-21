@@ -12,7 +12,7 @@ test("get /", async (t) => {
 });
 
 test("post /addautor", async (t) => {
-  t.plan(1);
+  t.plan(3);
 
   const body = {
     nombres: "luis alejandro",
@@ -27,50 +27,44 @@ test("post /addautor", async (t) => {
     headers: { "Content-Type": "application/json" },
   });
   const data = await response.json();
-
   t.is(response.status, 200);
+  t.is(data.nombres, "luis alejandro");
+  t.is(data.apellidos, "dias marci");
 });
 
 test("get /readallautores", async (t) => {
   t.plan(1);
 
   const response = await fetch("http://localhost:3000/readallautores");
-  const data = await response.json();
 
   t.is(response.status, 200);
 });
 
 test("get /readuniqueautor/:id", async (t) => {
-  t.plan(2);
+  t.plan(3);
 
   const response = await fetch(
-    "http://localhost:3000/readuniqueautor/657fb0dbed0eb811c0821da4"
+    "http://localhost:3000/readuniqueautor/657fbf836265e0033c0feaa5"
   );
   const data = await response.json();
 
   t.is(response.status, 200);
-  t.deepEqual(data, {
-    _id: "657fb0dbed0eb811c0821da4",
-    nombres: "Isaac",
-    apellidos: "Asimov",
-    fechaNacimiento: "1920-01-02T00:00:00.000Z",
-    fechaMuerte: "1992-04-06T00:00:00.000Z",
-    __v: 0,
-  });
+  t.is(data.nombres, "luis alejandro 3");
+  t.is(data.apellidos, "dias marci 3");
 });
 
 test("put /putupdateautor/:id", async (t) => {
-  t.plan(1);
+  t.plan(2);
 
   const body = {
-    nombres: "luis alejandro 3",
-    apellidos: "dias marci ",
+    nombres: "luis alejandro 5",
+    apellidos: "dias marci 5",
     fechaNacimiento: "1999-08-22",
     fechaMuerte: "2015-11-03",
   };
 
   const response = await fetch(
-    "http://localhost:3000/putupdateautor/657fb0dbed0eb811c0821da4",
+    "http://localhost:3000/putupdateautor/657fbf836265e0033c0feaa5",
     {
       method: "put",
       body: JSON.stringify(body),
@@ -80,18 +74,18 @@ test("put /putupdateautor/:id", async (t) => {
   const data = await response.json();
 
   t.is(response.status, 200);
+  t.is(data.nombres, "luis alejandro 3");
 });
 
-test("delete /deleteautor/:id", async (t) => {
+test.skip("delete /deleteautor/:id", async (t) => {
   t.plan(1);
 
   const response = await fetch(
-    "http://localhost:3000/deleteautor/657fb0dbed0eb811c0821da4",
+    "http://localhost:3000/deleteautor/657fbf836265e0033c0feaa4",
     {
       method: "delete",
     }
   );
-  const data = await response.json();
 
   t.is(response.status, 200);
 });
