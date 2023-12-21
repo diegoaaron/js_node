@@ -1,60 +1,58 @@
 import test from "ava";
 import fetch from "node-fetch";
 
-test.skip("post /addautor", async (t) => {
+test.skip("post /addventalibro", async (t) => {
   t.plan(3);
 
   const body = {
-    nombres: "luis alejandro",
-    apellidos: "dias marci",
-    fechaNacimiento: "1975-08-22",
-    fechaMuerte: "2015-11-03",
+    nombreCliente: "rufino torrico",
+    libro: ["657fb0deed0eb811c0821db1", "657fb0deed0eb811c0821db3"],
+    correo: "rufito@gmail.com",
+    fechaVenta: "2023-12-11",
   };
 
-  const response = await fetch("http://localhost:3000/addautor", {
+  const response = await fetch("http://localhost:3000/addventalibro", {
     method: "post",
     body: JSON.stringify(body),
     headers: { "Content-Type": "application/json" },
   });
   const data = await response.json();
   t.is(response.status, 200);
-  t.is(data.nombres, "luis alejandro");
-  t.is(data.apellidos, "dias marci");
+  t.is(data.nombreCliente, "rufino torrico");
+  t.is(data.correo, "rufito@gmail.com");
 });
 
-test.skip("get /readallautores", async (t) => {
+test.skip("get /readallventalibro", async (t) => {
   t.plan(1);
 
-  const response = await fetch("http://localhost:3000/readallautores");
+  const response = await fetch("http://localhost:3000/readallventalibro");
 
   t.is(response.status, 200);
 });
 
-test.skip("get /readuniqueautor/:id", async (t) => {
+test.skip("get /readuniqueventalibro/:id", async (t) => {
   t.plan(3);
 
   const response = await fetch(
-    "http://localhost:3000/readuniqueautor/657fbf836265e0033c0feaa5"
+    "http://localhost:3000/readuniqueventalibro/657fb0e0ed0eb811c0821dbf"
   );
   const data = await response.json();
 
   t.is(response.status, 200);
-  t.is(data.nombres, "luis alejandro 3");
-  t.is(data.apellidos, "dias marci 3");
+  t.is(data.nombreCliente, "Luis vasquez");
+  t.is(data.correo, "luis@gmail.com");
 });
 
-test.skip("put /putupdateautor/:id", async (t) => {
+test.skip("put /putupdateventalibro/:id", async (t) => {
   t.plan(2);
 
   const body = {
-    nombres: "luis alejandro 5",
-    apellidos: "dias marci 5",
-    fechaNacimiento: "1999-08-22",
-    fechaMuerte: "2015-11-03",
+    nombreCliente: "luis alejandro n",
+    correo: "lichin@gmail.com",
   };
 
   const response = await fetch(
-    "http://localhost:3000/putupdateautor/657fbf836265e0033c0feaa5",
+    "http://localhost:3000/putupdateventalibro/657fb0e0ed0eb811c0821dc1",
     {
       method: "put",
       body: JSON.stringify(body),
@@ -64,14 +62,14 @@ test.skip("put /putupdateautor/:id", async (t) => {
   const data = await response.json();
 
   t.is(response.status, 200);
-  t.is(data.nombres, "luis alejandro 3");
+  t.is(data.nombreCliente, "luis alejandro n");
 });
 
-test.skip("delete /deleteautor/:id", async (t) => {
+test.skip("delete /deleteventalibro/:id", async (t) => {
   t.plan(1);
 
   const response = await fetch(
-    "http://localhost:3000/deleteautor/657fbf836265e0033c0feaa4",
+    "http://localhost:3000/deleteventalibro/657fc22d1fdb646a1dc91470",
     {
       method: "delete",
     }
