@@ -2,7 +2,7 @@
 
 ### 📝 Descripción
 
-La estructura de archivos en una API REST con Express para el CRUD son: 
+La estructura de archivos en una API REST con Express para el CRUD son:
 
 ```plaintext
 .
@@ -35,14 +35,16 @@ La estructura de archivos en una API REST con Express para el CRUD son:
 ```
 
 - **`config/`:** Contiene archivos de configuración para tu aplicación.
+
   - **`database.js`:** Configuración de la conexión a la base de datos.
-  - **`config.js`:** Publicación de variables utilizadas en toda la app consumiendo el archivo .env 
+  - **`config.js`:** Publicación de variables utilizadas en toda la app consumiendo el archivo .env
 
 - **`src/`:** Contiene el código fuente de tu aplicación.
+
   - **`controllers/`:** Manejo de la lógica de la aplicación, cada archivo se encarga de una entidad específica.
   - **`models/`:** Contiene los modelos (estructuras) de datos de tu aplicación, cada uno representa una entidad.
   - **`routes/`:** Contiene las rutas de tu aplicación. Cada archivo de ruta está asociado con un controlador
-  - **`middleware/`:** Contiene archivos que procesan las solicitudes antes de que lleguen a los controladores. 
+  - **`middleware/`:** Contiene archivos que procesan las solicitudes antes de que lleguen a los controladores.
   - **`app.js`:** Archivo principal de la configuración de Express.
 
 - **`test/`:** Contiene archivos de testing para la app (modelos, controladores y rutas).
@@ -56,5 +58,6 @@ La estructura de archivos en una API REST con Express para el CRUD son:
 
 Información de referencia en la construcción de la API
 
-* [Test AVA docs](https://github.com/avajs/ava/blob/5975b602b771e0dc02382d24b65c5561bd5fc7ee/docs/03-assertions.md)
-* [Node-Fetch docs](https://github.com/node-fetch/node-fetch)
+- [Test AVA docs](https://github.com/avajs/ava/blob/5975b602b771e0dc02382d24b65c5561bd5fc7ee/docs/03-assertions.md)
+- [Node-Fetch docs](https://github.com/node-fetch/node-fetch)
+- [Ejemplo de express-validator](https://www.freecodecamp.org/espanol/news/como-hacer-la-validacion-de-entradas-simple-y-limpia-en-tu-app-expressjs/)
