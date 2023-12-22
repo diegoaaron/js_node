@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  validate,
   addAutor,
   readAllAutores,
   readUniqueAutor,
@@ -11,7 +12,7 @@ const router = express.Router();
 
 // create autor
 
-router.post("/addautor", addAutor);
+router.post("/addautor", validate("addAutor"), addAutor);
 
 // read all autor
 

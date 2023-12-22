@@ -1,9 +1,31 @@
 import { Autor } from "../model/autor.model.js";
+import { body, validationResult } from "express-validator";
+
+// validacion de "create Autor"
+const validate = (method) => {
+  switch (method) {
+    case "addAutor": {
+      return [
+        body("nombres", "nombre no indicado").exists(),
+        body("apellidos", "apellidos no indicados").exists(),
+        body("fechaNacimiento", "fecha de nacimiento vacia").exists(),
+        body("fechaMuerte", "fecha de muerte vacia").exists(),
+      ];
+    }
+  }
+};
 
 // create Autor
 
 const addAutor = async function (req, res) {
   try {
+    // validacion
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.status(422).send(errors.array());
+    }
+
+    // core de la funcion
     let { nombres, apellidos, fechaNacimiento, fechaMuerte } = req.body;
     fechaNacimiento = new Date(fechaNacimiento);
     fechaMuerte = new Date(fechaMuerte);
@@ -87,4 +109,11 @@ const deleteAutor = async function (req, res) {
   }
 };
 
-export { addAutor, readAllAutores, readUniqueAutor, putUpdateAutor, deleteAutor };
+export {
+  validate,
+  addAutor,
+  readAllAutores,
+  readUniqueAutor,
+  putUpdateAutor,
+  deleteAutor,
+};
