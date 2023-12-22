@@ -1,4 +1,6 @@
-### Estructura CRUD
+# API CRUD Libreria
+
+### 📝 Descripción
 
 La estructura de archivos en una API REST con Express para el CRUD son: 
 
@@ -31,8 +33,6 @@ La estructura de archivos en una API REST con Express para el CRUD son:
 ├── package.json
 └── README.md
 ```
-
-Explicación de la estructura propuesta:
 
 - **`config/`:** Contiene archivos de configuración para tu aplicación.
   - **`database.js`:** Configuración de la conexión a la base de datos.
