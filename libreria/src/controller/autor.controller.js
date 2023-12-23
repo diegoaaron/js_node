@@ -14,7 +14,7 @@ const validacionAutor = (method) => {
     }
     case "putUpdateAutor": {
       return [
-        param("id", "no se paso ID update").exists(),
+        param("id", "no se paso ID update").isLength({ min: 24, max: 24 }),
         body("nombres", "nombre no indicado update").exists(),
         body("apellidos", "apellidos no indicados update").exists(),
         body("fechaNacimiento", "fecha de nacimiento vacia update").exists(),
@@ -92,6 +92,7 @@ const putUpdateAutor = async function (req, res) {
   try {
     // validacion
     let erroresValidacion = validationResult(req);
+
     if (erroresValidacion.isEmpty()) {
       let { id } = req.params;
       let { nombres, apellidos, fechaNacimiento, fechaMuerte } = req.body;
@@ -103,6 +104,8 @@ const putUpdateAutor = async function (req, res) {
         { new: true }
       );
       res.status(200).send(autorUpdated);
+    } else {
+      throw erroresValidacion;
     }
   } catch (error) {
     res.status(500).send(error);
