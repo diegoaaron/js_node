@@ -1,6 +1,6 @@
 import express from "express";
 import {
-  validate,
+  validacionAutor,
   addAutor,
   readAllAutores,
   readUniqueAutor,
@@ -12,7 +12,7 @@ const router = express.Router();
 
 // create autor
 
-router.post("/addautor", validate("addAutor"), addAutor);
+router.post("/addautor", validacionAutor("addAutor"), addAutor);
 
 // read all autor
 
@@ -24,7 +24,7 @@ router.get("/readuniqueautor/:id", readUniqueAutor);
 
 // update autor with PUT
 
-router.put("/putupdateautor/:id", putUpdateAutor);
+router.put("/putupdateautor/:id", validacionAutor("putUpdateAutor"), putUpdateAutor);
 
 // update autor with PATCH
 
