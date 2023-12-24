@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  validacionLibro,
   addLibro,
   readAllLibros,
   readUniqueLibro,
@@ -11,7 +12,7 @@ const router = express.Router();
 
 // create libro
 
-router.post("/addlibro", addLibro);
+router.post("/addlibro", validacionLibro("addLibro"), addLibro);
 
 // read all libro
 
@@ -23,7 +24,7 @@ router.get("/readuniquelibro/:id", readUniqueLibro);
 
 // update libro with PUT
 
-router.put("/putupdatelibro/:id", putUpdateLibro);
+router.put("/putupdatelibro/:id", validacionLibro("putUpdateLibro"), putUpdateLibro);
 
 // update libro with PATCH
 

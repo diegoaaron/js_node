@@ -34,19 +34,26 @@ const validacionLibro = (method) => {
 
 const addLibro = async function (req, res) {
   try {
-    let { autor, titulo, resumen, isbn, serie, genero, estado } = req.body;
-    const libro = new Libro({
-      autor,
-      titulo,
-      resumen,
-      isbn,
-      serie,
-      genero,
-      estado,
-    });
-    await libro.save();
-    console.log(`Se ha registrado el nuevo libro con ID: ${libro._id}`);
-    res.status(200).send(libro);
+    // validacion
+    let erroresValidacion = validationResult(req);
+
+    if (erroresValidacion.isEmpty()) {
+      let { autor, titulo, resumen, isbn, serie, genero, estado } = req.body;
+      const libro = new Libro({
+        autor,
+        titulo,
+        resumen,
+        isbn,
+        serie,
+        genero,
+        estado,
+      });
+      await libro.save();
+      console.log(`Se ha registrado el nuevo libro con ID: ${libro._id}`);
+      res.status(200).send(libro);
+    } else {
+      throw erroresValidacion;
+    }
   } catch (error) {
     res.status(500).send(error);
   }
@@ -92,14 +99,21 @@ const readUniqueLibro = async function (req, res) {
 
 const putUpdateLibro = async function (req, res) {
   try {
-    let { id } = req.params;
-    let { autor, titulo, resumen, isbn, serie, genero, estado } = req.body;
-    const libroUpdated = await Libro.findByIdAndUpdate(
-      { _id: id },
-      { autor, titulo, resumen, isbn, serie, genero, estado },
-      { new: true }
-    );
-    res.status(200).send(libroUpdated);
+    // validacion
+    let erroresValidacion = validationResult(req);
+
+    if (erroresValidacion.isEmpty()) {
+      let { id } = req.params;
+      let { autor, titulo, resumen, isbn, serie, genero, estado } = req.body;
+      const libroUpdated = await Libro.findByIdAndUpdate(
+        { _id: id },
+        { autor, titulo, resumen, isbn, serie, genero, estado },
+        { new: true }
+      );
+      res.status(200).send(libroUpdated);
+    } else {
+      throw erroresValidacion;
+    }
   } catch (error) {
     res.status(500).send(error);
   }
