@@ -1,19 +1,50 @@
 import { VentaLibro } from "../model/ventalibro.model.js";
+import { body, param, validationResult } from "express-validator";
+
+// validacion de "VentaLibro"
+const validacionLibro = (method) => {
+  switch (method) {
+    case "addVentaLibro": {
+      return [
+        body("nombreCliente", "nombreCliente no indicado").exists(),
+        body("libro", "libro no indicados").exists(),
+        body("correo", "correo no indicado").exists(),
+        body("fechaVenta", "fechaVenta no indicado").exists(),
+      ];
+    }
+    case "putUpdateVentaLibro": {
+      return [
+        param("id", "no se paso ID update").isLength({ min: 24, max: 24 }),
+        body("nombreCliente", "nombreCliente no indicado").exists(),
+        body("libro", "libro no indicados").exists(),
+        body("correo", "correo no indicado").exists(),
+        body("fechaVenta", "fechaVenta no indicado").exists(),
+      ];
+    }
+  }
+};
 
 // create VentaLibro
 
 const addVentaLibro = async function (req, res) {
   try {
-    let { nombreCliente, libro, correo, fechaVenta } = req.body;
-    const ventaLibro = new VentaLibro({
-      nombreCliente,
-      libro,
-      correo,
-      fechaVenta,
-    });
-    await ventaLibro.save();
-    console.log(`Se ha registrado la venta del libro con ID: ${ventaLibro._id}`);
-    res.status(200).send(ventaLibro);
+    // validacion
+    let erroresValidacion = validationResult(req);
+
+    if (erroresValidacion.isEmpty()) {
+      let { nombreCliente, libro, correo, fechaVenta } = req.body;
+      const ventaLibro = new VentaLibro({
+        nombreCliente,
+        libro,
+        correo,
+        fechaVenta,
+      });
+      await ventaLibro.save();
+      console.log(`Se ha registrado la venta del libro con ID: ${ventaLibro._id}`);
+      res.status(200).send(ventaLibro);
+    } else {
+      throw erroresValidacion;
+    }
   } catch (error) {
     res.status(500).send(error);
   }
@@ -56,14 +87,21 @@ const readUniqueVentaLibro = async function (req, res) {
 
 const putUpdateVentaLibro = async function (req, res) {
   try {
-    let { id } = req.params;
-    let { nombreCliente, libro, correo, fechaVenta } = req.body;
-    const ventaLibroUpdated = await VentaLibro.findByIdAndUpdate(
-      { _id: id },
-      { nombreCliente, libro, correo, fechaVenta },
-      { new: true }
-    );
-    res.status(200).send(ventaLibroUpdated);
+    // validacion
+    let erroresValidacion = validationResult(req);
+
+    if (erroresValidacion.isEmpty()) {
+      let { id } = req.params;
+      let { nombreCliente, libro, correo, fechaVenta } = req.body;
+      const ventaLibroUpdated = await VentaLibro.findByIdAndUpdate(
+        { _id: id },
+        { nombreCliente, libro, correo, fechaVenta },
+        { new: true }
+      );
+      res.status(200).send(ventaLibroUpdated);
+    } else {
+      throw erroresValidacion;
+    }
   } catch (error) {
     res.status(500).send(error);
   }
@@ -84,6 +122,7 @@ const deleteVentaLibro = async function (req, res) {
 };
 
 export {
+  validacionLibro,
   addVentaLibro,
   readAllVentaLibro,
   readUniqueVentaLibro,
