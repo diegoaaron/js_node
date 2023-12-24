@@ -1,7 +1,7 @@
 import { Autor } from "../model/autor.model.js";
 import { body, param, validationResult } from "express-validator";
 
-// validacion de "create Autor"
+// validacion de "Autor"
 const validacionAutor = (method) => {
   switch (method) {
     case "addAutor": {

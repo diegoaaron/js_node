@@ -1,4 +1,34 @@
 import { Libro } from "../model/libro.model.js";
+import { body, param, validationResult } from "express-validator";
+
+// validacion de "Libro"
+const validacionLibro = (method) => {
+  switch (method) {
+    case "addLibro": {
+      return [
+        body("autor", "autor no indicado").exists(),
+        body("titulo", "titulo no indicados").exists(),
+        body("resumen", "resumen no indicado").exists(),
+        body("isbn", "isbn no indicado").exists(),
+        body("serie", "serie no indicado").exists(),
+        body("genero", "genero no indicado").exists(),
+        body("estado", "estado no indicado").exists(),
+      ];
+    }
+    case "putUpdateLibro": {
+      return [
+        param("id", "no se paso ID update").isLength({ min: 24, max: 24 }),
+        body("autor", "autor no indicado").exists(),
+        body("titulo", "titulo no indicados").exists(),
+        body("resumen", "resumen no indicado").exists(),
+        body("isbn", "isbn no indicado").exists(),
+        body("serie", "serie no indicado").exists(),
+        body("genero", "genero no indicado").exists(),
+        body("estado", "estado no indicado").exists(),
+      ];
+    }
+  }
+};
 
 // create Libro
 
@@ -89,4 +119,11 @@ const deleteLibro = async function (req, res) {
   }
 };
 
-export { addLibro, readAllLibros, readUniqueLibro, putUpdateLibro, deleteLibro };
+export {
+  validacionLibro,
+  addLibro,
+  readAllLibros,
+  readUniqueLibro,
+  putUpdateLibro,
+  deleteLibro,
+};
