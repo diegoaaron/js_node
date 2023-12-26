@@ -45,6 +45,14 @@ const validacionAutor = (method) => {
 
 const addAutor = async function (req, res) {
   try {
+    // autorizacion
+    const token = req.headers.authorization.split(" ")[1];
+    const payload = jwt.verify(token, secretjwt);
+
+    if (Date.now() > payload.exp) {
+      return res.status(401).send({ error: "token expirado" });
+    }
+
     // validacion
     let erroresValidacion = validationResult(req);
 
