@@ -115,6 +115,14 @@ const readUniqueAutor = async function (req, res) {
 
 const putUpdateAutor = async function (req, res) {
   try {
+    // autorización
+    const token = req.headers.authorization.split(" ")[1];
+    const payload = jwt.verify(token, secretjwt);
+
+    if (Date.now() > payload.exp) {
+      return res.status(401).send({ error: "token expirado" });
+    }
+
     // validacion
     let erroresValidacion = validationResult(req);
 
@@ -143,6 +151,14 @@ const putUpdateAutor = async function (req, res) {
 
 const deleteAutor = async function (req, res) {
   try {
+    // autorización
+    const token = req.headers.authorization.split(" ")[1];
+    const payload = jwt.verify(token, secretjwt);
+
+    if (Date.now() > payload.exp) {
+      return res.status(401).send({ error: "token expirado" });
+    }
+
     let { id } = req.params;
     const autorDeleted = await Autor.findOneAndDelete({ _id: id });
     res.status(200).send(autorDeleted);
