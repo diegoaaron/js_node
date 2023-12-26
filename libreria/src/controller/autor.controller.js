@@ -4,6 +4,8 @@ import jwt from "jsonwebtoken";
 
 // parte autenticacion
 const secretjwt = process.env.SECRETJWT;
+
+// funcion para devolver token
 const obtenertoken = async function (req, res) {
   // el user se debe obtener de una BD
   const { id: sub, name } = { id: "usr01", name: "diego" };

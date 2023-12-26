@@ -1,5 +1,9 @@
 import { Libro } from "../model/libro.model.js";
 import { body, param, validationResult } from "express-validator";
+import jwt from "jsonwebtoken";
+
+// parte autenticacion
+const secretjwt = process.env.SECRETJWT;
 
 // validacion de "Libro"
 const validacionLibro = (method) => {
@@ -34,6 +38,14 @@ const validacionLibro = (method) => {
 
 const addLibro = async function (req, res) {
   try {
+    // autenticación
+    const token = req.headers.authorization.split(" ")[1];
+    const payload = jwt.verify(token, secretjwt);
+
+    if (Date.now() > payload.exp) {
+      return res.status(401).send({ error: "token expirado" });
+    }
+
     // validacion
     let erroresValidacion = validationResult(req);
 
@@ -99,6 +111,14 @@ const readUniqueLibro = async function (req, res) {
 
 const putUpdateLibro = async function (req, res) {
   try {
+    // autenticación
+    const token = req.headers.authorization.split(" ")[1];
+    const payload = jwt.verify(token, secretjwt);
+
+    if (Date.now() > payload.exp) {
+      return res.status(401).send({ error: "token expirado" });
+    }
+
     // validacion
     let erroresValidacion = validationResult(req);
 
@@ -125,6 +145,14 @@ const putUpdateLibro = async function (req, res) {
 
 const deleteLibro = async function (req, res) {
   try {
+    // autenticación
+    const token = req.headers.authorization.split(" ")[1];
+    const payload = jwt.verify(token, secretjwt);
+
+    if (Date.now() > payload.exp) {
+      return res.status(401).send({ error: "token expirado" });
+    }
+
     let { id } = req.params;
     const libroDeleted = await Libro.findOneAndDelete({ _id: id });
     res.status(200).send(libroDeleted);
