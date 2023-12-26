@@ -1,5 +1,22 @@
 import { Autor } from "../model/autor.model.js";
 import { body, param, validationResult } from "express-validator";
+import jwt from "jsonwebtoken";
+
+// parte autenticacion
+const secretjwt = process.env.SECRETJWT;
+const obtenertoken = async function (req, res) {
+  // el user se debe obtener de una BD
+  const { id: sub, name } = { id: "usr01", name: "diego" };
+  const token = jwt.sign(
+    {
+      sub,
+      name,
+      exp: Date.now() + 180 * 1000,
+    },
+    secretjwt
+  );
+  res.send({ token });
+};
 
 // validacion de "Autor"
 const validacionAutor = (method) => {
@@ -127,6 +144,7 @@ const deleteAutor = async function (req, res) {
 };
 
 export {
+  obtenertoken,
   validacionAutor,
   addAutor,
   readAllAutores,

@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  obtenertoken,
   validacionAutor,
   addAutor,
   readAllAutores,
@@ -9,6 +10,9 @@ import {
 } from "../controller/autor.controller.js";
 
 const router = express.Router();
+
+// aut jwt
+router.post("/obtenertoken", obtenertoken);
 
 // create autor
 
