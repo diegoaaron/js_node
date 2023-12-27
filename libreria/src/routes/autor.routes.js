@@ -15,7 +15,14 @@ const router = express.Router();
 router.post("/obtenertoken", obtenertoken);
 
 // create autor
-
+/**
+ * @swagger
+ * 
+ * /addautor:
+ *   post:
+ *     summary: Retrieve a list of JSONPlaceholder users
+ *     description: Retrieve a list of users from JSONPlaceholder. Can be used to populate a list of fake users when prototyping or testing an API.
+ */
 router.post("/addautor", validacionAutor("addAutor"), addAutor);
 
 // read all autor

@@ -1,10 +1,13 @@
 import express from "express";
-
+import { dirbasesrc } from "../config/config.js";
+import { join } from "path";
 // database
 import { urlmongoconexion } from "../config/config.js";
 import { openmongoconexion } from "../config/mongo.conexion.js";
 
 openmongoconexion(urlmongoconexion);
+let rutex = join(dirbasesrc, "/routes/*.js");
+console.log(rutex);
 
 // documentacion
 import swaggerJsdoc from "swagger-jsdoc";
@@ -12,13 +15,14 @@ import swaggerUi from "swagger-ui-express";
 
 const options = {
   definition: {
-    openapi: "3.0.1",
+    openapi: "3.0.0",
     info: {
       title: "Documentacion API Libreria",
       version: "1.1.1",
+      description: "API sobre solicitud de libros",
     },
   },
-  apis: ["./routes/*.js"],
+  apis: [rutex],
 };
 
 const openapiSpecification = swaggerJsdoc(options);
