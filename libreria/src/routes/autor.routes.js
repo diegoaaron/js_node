@@ -20,8 +20,8 @@ router.post("/obtenertoken", obtenertoken);
  * 
  * /addautor:
  *   post:
- *     summary: Retrieve a list of JSONPlaceholder users
- *     description: Retrieve a list of users from JSONPlaceholder. Can be used to populate a list of fake users when prototyping or testing an API.
+ *     summary: Crea un nuevo autor
+ *     description: Funcion que permite registrar un nuevo autor
  */
 router.post("/addautor", validacionAutor("addAutor"), addAutor);
 
