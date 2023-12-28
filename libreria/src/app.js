@@ -6,8 +6,8 @@ import { urlmongoconexion } from "../config/config.js";
 import { openmongoconexion } from "../config/mongo.conexion.js";
 
 openmongoconexion(urlmongoconexion);
-let rutex = join(dirbasesrc, "/routes/*.js");
-console.log(rutex);
+
+let ruteDocs = join(dirbasesrc, "/routes/*.js");
 
 // documentacion
 import swaggerJsdoc from "swagger-jsdoc";
@@ -18,11 +18,11 @@ const options = {
     openapi: "3.0.0",
     info: {
       title: "Documentacion API Libreria",
-      version: "1.1.1",
-      description: "API sobre solicitud de libros",
+      version: "1.0.0",
+      description: "API sobre venta de libros",
     },
   },
-  apis: [rutex],
+  apis: [ruteDocs],
 };
 
 const openapiSpecification = swaggerJsdoc(options);

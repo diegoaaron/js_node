@@ -11,18 +11,29 @@ import {
 
 const router = express.Router();
 
-// aut jwt
-router.post("/obtenertoken", obtenertoken);
-
-// create autor
+// obtener aut jwt
 /**
  * @swagger
  * 
- * /addautor:
+ * /obtenertoken:
  *   post:
- *     summary: Crea un nuevo autor
- *     description: Funcion que permite registrar un nuevo autor
+ *     description: retorna un token de autenticación
+ *     summary: retorna un bear token
+ *     operationId: obtenertoken
+ *     responses:
+ *       200:
+ *         description: token string response
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: string
+ *               items:
+ *                 $ref: '#'
  */
+router.post("/obtenertoken", obtenertoken);
+
+// create autor
+
 router.post("/addautor", validacionAutor("addAutor"), addAutor);
 
 // read all autor
