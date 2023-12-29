@@ -40,7 +40,7 @@ router.post("/obtenertoken", obtenertoken);
  * paths: 
  *   /addautor:
  *     post:
- *       description: retorna un token de autenticación
+ *       description: crear un nuevo autor 
  *       summary: retorna un bear token
  *       security:
  *         - bearerAuth: [] 
@@ -103,7 +103,42 @@ router.get("/readallautores", readAllAutores);
 router.get("/readuniqueautor/:id", readUniqueAutor);
 
 // update autor with PUT
-
+/**
+ * @swagger
+ * 
+ * paths:
+ *   /putupdateautor/{id}:
+ *     put:
+ *       parameters:
+ *         - in: path
+ *           name: id
+ *           required: true
+ *           schema:
+ *             type: string
+ *           description: ID del autor
+ *       description: actualización de información del autor
+ *       summary: actualiza autor
+ *       security:
+ *         - bearerAuth: [] 
+ *       requestBody:
+ *         required: true
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 nombres:
+ *                   type: string
+ *                 apellidos:
+ *                   type: string
+ *                 fechaNacimiento:
+ *                   type: string
+ *                 fechaMuerte:
+ *                   type: string
+ *       responses:
+ *         200:
+ *           description: información de autor actualizada
+ */
 router.put("/putupdateautor/:id", validacionAutor("putUpdateAutor"), putUpdateAutor);
 
 // update autor with PATCH
