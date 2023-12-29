@@ -144,7 +144,27 @@ router.put("/putupdateautor/:id", validacionAutor("putUpdateAutor"), putUpdateAu
 // update autor with PATCH
 
 // delete autor
-
+/**
+ * @swagger
+ * 
+ * paths:
+ *   /deleteautor/{id}:
+ *     delete:
+ *       parameters:
+ *         - in: path
+ *           name: id
+ *           required: true
+ *           schema:
+ *             type: string
+ *           description: ID del autor
+ *       description: elimina el autor enviado
+ *       summary: eliminacion autor
+ *       security:
+ *         - bearerAuth: [] 
+ *       responses:
+ *         200:
+ *           description: confirmacion de autor eliminado
+ */
 router.delete("/deleteautor/:id", deleteAutor);
 
 export default router;
