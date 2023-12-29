@@ -29,31 +29,38 @@ router.post("/obtenertoken", obtenertoken);
 // create autor
 /**
  * @swagger
- * 
- * /addautor:
- *   post:
- *     description: retorna un token de autenticación
- *     summary: retorna un bear token
- *     security:
- *       - bearerAuth: [eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c3IwMSIsIm5hbWUiOiJkaWVnbyIsImV4cCI6MTcwMzgxMTQ0MDA3NSwiaWF0IjoxNzAzODExMjYwfQ.M50SmkLGvnpvSHOMSwkLctoUtdSOtOM0uP1CEedtVhg] 
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               nombres:
- *                 type: string
- *               apellidos:
- *                 type: string
- *               fechaNacimiento:
- *                 type: string
- *               fechaMuerte:
- *                 type: string
- *     responses:
- *       200:
- *         description: generar un nuevo autor
+ *
+ * components:
+ *   securitySchemes:
+ *     bearerAuth:
+ *       type: http
+ *       scheme: bearer
+ *
+ * paths: 
+ *   /addautor:
+ *     post:
+ *       description: retorna un token de autenticación
+ *       summary: retorna un bear token
+ *       security:
+ *         - bearerAuth: [] 
+ *       requestBody:
+ *         required: true
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 nombres:
+ *                   type: string
+ *                 apellidos:
+ *                   type: string
+ *                 fechaNacimiento:
+ *                   type: string
+ *                 fechaMuerte:
+ *                   type: string
+ *       responses:
+ *         200:
+ *           description: generar un nuevo autor
  */
 router.post("/addautor", validacionAutor("addAutor"), addAutor);
 
