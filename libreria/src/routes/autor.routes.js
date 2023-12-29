@@ -81,7 +81,25 @@ router.post("/addautor", validacionAutor("addAutor"), addAutor);
 router.get("/readallautores", readAllAutores);
 
 // read unique autor
-
+/**
+ * @swagger
+ * 
+ * paths:
+ *   /readuniqueautor/{id}:
+ *     get:
+ *       parameters:
+ *         - in: path
+ *           name: id
+ *           required: true
+ *           schema:
+ *             type: string
+ *           description: ID del autor
+ *       description: retorna la lista de todos los autores
+ *       summary: retorno de autores
+ *       responses:
+ *         200:
+ *           description: lista de autores
+ */
 router.get("/readuniqueautor/:id", readUniqueAutor);
 
 // update autor with PUT
