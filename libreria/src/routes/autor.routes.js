@@ -94,11 +94,11 @@ router.get("/readallautores", readAllAutores);
  *           schema:
  *             type: string
  *           description: ID del autor
- *       description: retorna la lista de todos los autores
- *       summary: retorno de autores
+ *       description: retorna información del autor
+ *       summary: info del autor
  *       responses:
  *         200:
- *           description: lista de autores
+ *           description: información del autor
  */
 router.get("/readuniqueautor/:id", readUniqueAutor);
 
