@@ -15,14 +15,15 @@ const router = express.Router();
 /**
  * @swagger
  * 
- * /obtenertoken:
- *   post:
- *     description: retorna un token de autenticación
- *     summary: retorna un bear token
- *     operationId: obtenertoken
- *     responses:
- *       200:
- *         description: token generado con validez de 3 minutos
+ * paths:
+ *   /obtenertoken:
+ *     post:
+ *       description: retorna un token de autenticación
+ *       summary: retorna un bear token
+ *       operationId: obtenertoken
+ *       responses:
+ *         200:
+ *           description: token generado con validez de 3 minutos
  */
 router.post("/obtenertoken", obtenertoken);
 
