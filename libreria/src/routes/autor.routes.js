@@ -66,7 +66,18 @@ router.post("/obtenertoken", obtenertoken);
 router.post("/addautor", validacionAutor("addAutor"), addAutor);
 
 // read all autor
-
+/**
+ * @swagger
+ * 
+ * paths:
+ *   /readallautores:
+ *     get:
+ *       description: retorna la lista de todos los autores
+ *       summary: retorno de autores
+ *       responses:
+ *         200:
+ *           description: lista de autores
+ */
 router.get("/readallautores", readAllAutores);
 
 // read unique autor
