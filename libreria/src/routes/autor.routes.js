@@ -14,7 +14,7 @@ const router = express.Router();
 // obtener aut jwt
 /**
  * @swagger
- * 
+ *
  * paths:
  *   /obtenertoken:
  *     post:
@@ -37,13 +37,13 @@ router.post("/obtenertoken", obtenertoken);
  *       type: http
  *       scheme: bearer
  *
- * paths: 
+ * paths:
  *   /addautor:
  *     post:
- *       description: crear un nuevo autor 
+ *       description: crear un nuevo autor
  *       summary: retorna un bear token
  *       security:
- *         - bearerAuth: [] 
+ *         - bearerAuth: []
  *       requestBody:
  *         required: true
  *         content:
@@ -68,7 +68,7 @@ router.post("/addautor", validacionAutor("addAutor"), addAutor);
 // read all autor
 /**
  * @swagger
- * 
+ *
  * paths:
  *   /readallautores:
  *     get:
@@ -83,7 +83,7 @@ router.get("/readallautores", readAllAutores);
 // read unique autor
 /**
  * @swagger
- * 
+ *
  * paths:
  *   /readuniqueautor/{id}:
  *     get:
@@ -105,7 +105,7 @@ router.get("/readuniqueautor/:id", readUniqueAutor);
 // update autor with PUT
 /**
  * @swagger
- * 
+ *
  * paths:
  *   /putupdateautor/{id}:
  *     put:
@@ -119,7 +119,7 @@ router.get("/readuniqueautor/:id", readUniqueAutor);
  *       description: actualización de información del autor
  *       summary: actualiza autor
  *       security:
- *         - bearerAuth: [] 
+ *         - bearerAuth: []
  *       requestBody:
  *         required: true
  *         content:
@@ -146,7 +146,7 @@ router.put("/putupdateautor/:id", validacionAutor("putUpdateAutor"), putUpdateAu
 // delete autor
 /**
  * @swagger
- * 
+ *
  * paths:
  *   /deleteautor/{id}:
  *     delete:
@@ -160,7 +160,7 @@ router.put("/putupdateautor/:id", validacionAutor("putUpdateAutor"), putUpdateAu
  *       description: elimina el autor enviado
  *       summary: eliminacion autor
  *       security:
- *         - bearerAuth: [] 
+ *         - bearerAuth: []
  *       responses:
  *         200:
  *           description: confirmacion de autor eliminado
