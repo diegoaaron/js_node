@@ -3,9 +3,10 @@ import { dirbasesrc } from "../config/config.js";
 import { join } from "path";
 // database
 import { urlmongoconexion } from "../config/config.js";
-import { openmongoconexion } from "../config/mongo.conexion.js";
+import { openmongoconexion, connectionToTransacction } from "../config/mongo.conexion.js";
 
-openmongoconexion(urlmongoconexion);
+await openmongoconexion(urlmongoconexion);
+let sessionToTransactionF = await connectionToTransacction(urlmongoconexion);
 
 let ruteDocs = join(dirbasesrc, "/routes/*.js");
 
@@ -52,4 +53,4 @@ app.get("/", (req, res) => {
     );
 });
 
-export { app };
+export { app, sessionToTransactionF };

@@ -9,6 +9,17 @@ async function openmongoconexion(url) {
   }
 }
 
+async function connectionToTransacction(url) {
+  try {
+    let connectionOn = await mongoose.connect(url);
+    let sessionToTransaction = await connectionOn.startSession();
+    console.log("sesion levantada!");
+    return sessionToTransaction;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 async function closemongoconexion() {
   try {
     await mongoose.connection.close();
@@ -18,4 +29,4 @@ async function closemongoconexion() {
   }
 }
 
-export { openmongoconexion, closemongoconexion };
+export { openmongoconexion, connectionToTransacction, closemongoconexion };

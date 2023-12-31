@@ -1,6 +1,9 @@
 import { VentaLibro } from "../model/ventalibro.model.js";
+import { Libro } from "../model/libro.model.js";
 import { body, param, validationResult } from "express-validator";
 import jwt from "jsonwebtoken";
+
+import { sessionToTransactionF } from "../app.js";
 
 // parte autenticacion
 const secretjwt = process.env.SECRETJWT;
@@ -44,6 +47,7 @@ const addVentaLibro = async function (req, res) {
     let erroresValidacion = validationResult(req);
 
     if (erroresValidacion.isEmpty()) {
+      sessionToTransactionF.startTransaction();
       let { nombreCliente, libro, correo, fechaVenta } = req.body;
       const ventaLibro = new VentaLibro({
         nombreCliente,
@@ -51,13 +55,33 @@ const addVentaLibro = async function (req, res) {
         correo,
         fechaVenta,
       });
-      await ventaLibro.save();
+      await ventaLibro.save({ session: sessionToTransactionF });
+      if (Array.isArray(libro)) {
+        for (const iterator of libro) {
+          await Libro.findByIdAndUpdate(
+            { _id: iterator },
+            { estado: "vendido" },
+            { new: false, session: sessionToTransactionF }
+          );
+        }
+      } else {
+        await Libro.findByIdAndUpdate(
+          { _id: libro },
+          { estado: "vendido" },
+          { new: false, session: sessionToTransactionF }
+        );
+      }
+      let finalcomit = await sessionToTransactionF.commitTransaction();
+      // if (!finalcomit) {
+      //   await sessionToTransactionF.abortTransaction();
+      // }
       console.log(`Se ha registrado la venta del libro con ID: ${ventaLibro._id}`);
       res.status(200).send(ventaLibro);
     } else {
       throw erroresValidacion;
     }
   } catch (error) {
+    console.log(error);
     res.status(500).send(error);
   }
 };
