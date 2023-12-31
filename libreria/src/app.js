@@ -45,7 +45,11 @@ app.use(routerVentaLibro);
 
 // ruta base
 app.get("/", (req, res) => {
-  res.status(200).send("API up!");
+  res
+    .status(200)
+    .send(
+      "API up!. puedes revisar todas las funciones disponibles en la API a través de http://localhost:3000/docs/"
+    );
 });
 
 export { app };
