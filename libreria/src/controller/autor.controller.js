@@ -147,8 +147,6 @@ const putUpdateAutor = async function (req, res) {
   }
 };
 
-// update Author with PATCH
-
 // delete Author
 
 const deleteAutor = async function (req, res) {

@@ -127,8 +127,6 @@ const putUpdateVentaLibro = async function (req, res) {
   }
 };
 
-// update VentaLibro with PATCH
-
 // delete VentaLibro
 
 const deleteVentaLibro = async function (req, res) {

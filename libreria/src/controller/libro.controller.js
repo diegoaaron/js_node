@@ -139,8 +139,6 @@ const putUpdateLibro = async function (req, res) {
   }
 };
 
-// update Libro with PATCH
-
 // delete Libros
 
 const deleteLibro = async function (req, res) {
