@@ -10,7 +10,7 @@ Ejercicios sobre scripts utilizando JavaScript o projectos con Node y Express.
 - [ ] [Ejercios FreecodeCamp Interview](interviewprep/README.md)
 - [x] [Ejercios Node Basicos](node_basic/README.md)
 - [x] [Proyecto Libreria](libreria/README.md)
-- [x] [Scan de webs](#)
+- [ ] [Scan de webs](#)
 
 ### ⚙️ Referencias
 
