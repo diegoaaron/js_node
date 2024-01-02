@@ -72,9 +72,6 @@ La estructura de archivos en una API REST con Express para el CRUD son:
 12. implementar el servicio de autenticación (utiliza jsonwebtoken)
 13. implementar el servicio de documentación (utiliza swagger-jsdoc swagger-ui-express)
 
-- revisar el código de test y reordenar la validación, autenticación y documentación en la carpeta middleware, utilizando "req,res,next"
- * se puede implementar validaciones en el Modelo. Es mejor asegurar que la validación ocurra antes de la lógica de negocios.
-
 ### ⚙️ Referencias
 
 Información de referencia en la construcción de la API
