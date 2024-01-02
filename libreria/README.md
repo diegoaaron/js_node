@@ -67,10 +67,10 @@ La estructura de archivos en una API REST con Express para el CRUD son:
 07. definir los routers
 08. actualizar el archivo app.js
 09. levantar la app y hacer una prueba básica con POSTMAN
-10. implementar los test para todos los controladores (utiliza ava.js)
+10. implementar los test para todos los controladores (ava.js)
 11. implementar la validación de datos que recibe a través de la API (utiliza express-validator)
-12. implementar el servicio de autenticación (utiliza jsonwebtoken)
-13. implementar el servicio de documentación (utiliza swagger-jsdoc swagger-ui-express)
+12. implementar el servicio de autenticación (jsonwebtoken)
+13. implementar el servicio de documentación (swagger-jsdoc y swagger-ui-express)
 
 ### ⚙️ Referencias
 
