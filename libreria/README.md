@@ -54,6 +54,27 @@ La estructura de archivos en una API REST con Express para el CRUD son:
 - **`index.js`:** Script que inicia el servidor Express.
 - **`package.json`:** Archivo de configuración de Node.js que incluye dependencias, scripts, y otra información relevante.
 
+### 📝 Desarrollo
+
+- Orden de desarrollo del API Libreria en NODE/EXPRESS
+
+01. definir el modelo en una imagen y sus especifcaciones
+02. crear el proyecto segun la estructura básica definida
+03. configurar los acceso a la BD
+04. realizar la cadena de conexión
+05. definir los modelos (agregar data de prueba)
+06. definir los controladores
+07. definir los routers
+08. actualizar el archivo app.js
+09. levantar la app y hacer una prueba básica con POSTMAN
+10. implementar los test para todos los controladores (utiliza ava.js)
+11. implementar la validación de datos que recibe a través de la API (utiliza express-validator)
+12. implementar el servicio de autenticación (utiliza jsonwebtoken)
+13. implementar el servicio de documentación (utiliza swagger-jsdoc swagger-ui-express)
+
+- revisar el código de test y reordenar la validación, autenticación y documentación en la carpeta middleware, utilizando "req,res,next"
+ * se puede implementar validaciones en el Modelo. Es mejor asegurar que la validación ocurra antes de la lógica de negocios.
+
 ### ⚙️ Referencias
 
 Información de referencia en la construcción de la API
