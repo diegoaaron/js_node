@@ -54,7 +54,7 @@ La estructura de archivos en una API REST con Express para el CRUD son:
 - **`index.js`:** Script que inicia el servidor Express.
 - **`package.json`:** Archivo de configuración de Node.js que incluye dependencias, scripts, y otra información relevante.
 
-### 📝 Desarrollo
+### 📒 Contenido
 
 - Orden de desarrollo del API Libreria en NODE/EXPRESS
 
