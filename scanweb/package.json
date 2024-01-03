@@ -1,0 +1,25 @@
+{
+  "name": "scanweb",
+  "version": "1.0.0",
+  "description": "SCAN Web",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon ./index.js",
+    "test": "ava"
+  },
+  "keywords": [],
+  "author": "diego aaron",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "luxon": "^3.4.4",
+    "mongoose": "^8.0.1",
+    "node-fetch": "^3.3.2",
+    "puppeteer": "^21.6.1"
+  },
+  "devDependencies": {
+    "ava": "^6.0.1"
+  }
+}
