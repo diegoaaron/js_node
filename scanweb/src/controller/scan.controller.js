@@ -1,18 +1,7 @@
 import { Scan } from "../model/scan.model.js";
-import puppeteer from "puppeteer-extra";
+import puppeteer from "puppeteer";
 
-import StealthPlugin from "puppeteer-extra-plugin-stealth";
-import AdblockerPlugin from "puppeteer-extra-plugin-adblocker";
-// import puppeteer from "puppeteer";
-
-// Add stealth plugin and use defaults (all tricks to hide puppeteer usage)
-puppeteer.use(StealthPlugin());
-
-// Add adblocker plugin to block all ads and trackers (saves bandwidth)
-
-puppeteer.use(AdblockerPlugin({ blockTrackers: true }));
-
-// login en la web
+// tiempo de espera
 
 function waitforme(millisec) {
   return new Promise((resolve) => {
@@ -30,14 +19,16 @@ async function printy() {
   console.log("Loop execution finished!)");
 }
 
-const loginInWeb = async function (req, res) {
+// busqueda de articulos
+
+const busquedaDeArticulos = async function (req, res) {
   try {
     // Launch the browser and open a new blank page
     const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
 
     // Navigate the page to a URL
-    await page.goto("https://pe.parimatch.com/es/");
+    await page.goto("https://tottus.falabella.com.pe/tottus-pe");
 
     // Set screen size
     await page.setViewport({ width: 1080, height: 1024 });
@@ -82,31 +73,5 @@ const loginInWeb = async function (req, res) {
 
 await loginInWeb();
 
-// leer apuestas de futbol
 
-const leerApuestasFutbol = async function (req, res) {
-  try {
-  } catch (error) {
-    res.status(500).send(error);
-  }
-};
-
-// leer una unica apuesta
-
-const leerUnicaApuesta = async function (req, res) {
-  try {
-  } catch (error) {
-    res.status(500).send(error);
-  }
-};
-
-// leer apuestas finalizadas
-
-const leerApuestasFinalizadas = async function (req, res) {
-  try {
-  } catch (error) {
-    res.status(500).send(error);
-  }
-};
-
-export { loginInWeb, leerApuestasFutbol, leerUnicaApuesta, leerApuestasFinalizadas };
+export { busquedaDeArticulos };
