@@ -23,39 +23,38 @@ async function printy() {
 
 const busquedaDeArticulos = async function (req, res) {
   try {
-    // Launch the browser and open a new blank page
+    // Lanzando navegador
     const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
 
-    // Navigate the page to a URL
+    // Navegando a la URL
     await page.goto("https://tottus.falabella.com.pe/tottus-pe");
 
-    // Set screen size
+    // Definiendo la pantalla
     await page.setViewport({ width: 1080, height: 1024 });
 
     // Wait and click on first result
-    const searchResultSelector =
-      ".modulor_button__button__1_32_8.modulor_button__always_white__1_32_8.modulor_button__low__1_32_8";
-    await page.waitForSelector(searchResultSelector);
-    await page.click(searchResultSelector);
+    const searchResultSelector = ".SearchBar-module_searchBar__Input__1kPKS";
+    await page.type(searchResultSelector, "televisor");
 
-    const logintag =
-      ".modulor_field__field-input__1_32_8.modulor_field__with-label__1_32_8.modulor_field__active__1_32_8";
+    const buttonResultSelectro = ".SearchBar-module_searchIcon__FS7b4";
+    await page.click(buttonResultSelectro);
 
-    const passtag =
-      ".modulor_field__field-input__1_32_8.modulor_field__with-label__1_32_8.modulor_field__with-action-icon__1_32_8";
+    const buttonOrdenado = ".jsx-1051336967.dropdown-select";
+    await page.waitForSelector(buttonOrdenado);
+    await page.click(buttonOrdenado);
 
-    const buttontag =
-      ".modulor_button__button__1_32_8.modulor_button__primary__1_32_8.modulor_button__regular__1_32_8";
+    const searchMasBaratos = ".jsx-1051336967.dropdown-list-item";
+    await page.waitForSelector(searchMasBaratos);
+    await page.click(searchMasBaratos);
 
-    await page.waitForSelector(logintag);
+    const resultado = ".jsx-1221811815.search-results--products";
+    await page.waitForSelector(resultado);
 
-    await page.type(logintag, "999111222");
-    await printy();
-    await page.type(passtag, "@new");
-    await printy();
-    await page.click(buttontag);
-    await printy();
+    const lsu = ".jsx-1484439449.search-results-4-grid grid-pod";
+    await page.waitForSelector(lsu);
+
+    // let fullresult = await
 
     // Locate the full title with a unique string
     // const textSelector = await page.waitForSelector("text/Customize and automate");
@@ -71,7 +70,6 @@ const busquedaDeArticulos = async function (req, res) {
   }
 };
 
-await loginInWeb();
-
+await busquedaDeArticulos();
 
 export { busquedaDeArticulos };
