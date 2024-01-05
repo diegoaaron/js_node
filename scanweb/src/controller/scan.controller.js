@@ -51,10 +51,20 @@ const busquedaDeArticulos = async function (req, res) {
     const resultado = ".jsx-1221811815.search-results--products";
     await page.waitForSelector(resultado);
 
-    const lsu = ".jsx-1484439449.search-results-4-grid grid-pod";
+    const lsu = ".jsx-1484439449.search-results-4-grid.grid-pod";
     await page.waitForSelector(lsu);
 
-    // let fullresult = await
+    let quotes = await page.evaluate(() => {
+      let quoteelements = document.body.querySelectorAll(
+        ".jsx-1484439449.search-results-4-grid.grid-pod"
+      );
+      let avion = Object.values(quoteelements).map((x) => {
+        return x.textContent;
+      });
+      return avion;
+    });
+
+    console.log(quotes, quotes.length);
 
     // Locate the full title with a unique string
     // const textSelector = await page.waitForSelector("text/Customize and automate");
