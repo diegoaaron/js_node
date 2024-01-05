@@ -33,31 +33,38 @@ const busquedaDeArticulos = async function (req, res) {
     // Definiendo la pantalla
     await page.setViewport({ width: 1080, height: 1024 });
 
-    // Wait and click on first result
+    // Relizo la busqueda
     const searchResultSelector = ".SearchBar-module_searchBar__Input__1kPKS";
     await page.type(searchResultSelector, "televisor");
 
-    const buttonResultSelectro = ".SearchBar-module_searchIcon__FS7b4";
-    await page.click(buttonResultSelectro);
+    // Ejecuto la busqueda
+    const buttonResultSelector = ".SearchBar-module_searchIcon__FS7b4";
+    await page.click(buttonResultSelector);
 
-    const buttonOrdenado = ".jsx-1051336967.dropdown-select";
-    await page.waitForSelector(buttonOrdenado);
-    await page.click(buttonOrdenado);
+    // Ordenando resultados por el más barato
+    const buttonOrden = ".jsx-1051336967.dropdown-select";
+    await page.waitForSelector(buttonOrden);
+    await page.click(buttonOrden);
 
     const searchMasBaratos = ".jsx-1051336967.dropdown-list-item";
     await page.waitForSelector(searchMasBaratos);
     await page.click(searchMasBaratos);
 
-    const resultado = ".jsx-1221811815.search-results--products";
-    await page.waitForSelector(resultado);
+    // Seleccionando grupo de items ordenados
+    const grupoResultados = ".jsx-1221811815.search-results--products";
+    await page.waitForSelector(grupoResultados);
 
-    const lsu = ".jsx-1484439449.search-results-4-grid.grid-pod";
-    await page.waitForSelector(lsu);
+    // Validamos la carga de todos los items
+    const itemsResultados = ".jsx-1484439449.search-results-4-grid.grid-pod";
+    await page.waitForSelector(itemsResultados);
+
+    
 
     let quotes = await page.evaluate(() => {
       let quoteelements = document.body.querySelectorAll(
         ".jsx-1484439449.search-results-4-grid.grid-pod"
       );
+      console.log(quoteelements);
       let avion = Object.values(quoteelements).map((x) => {
         return x.textContent;
       });
