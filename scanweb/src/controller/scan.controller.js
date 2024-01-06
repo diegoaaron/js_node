@@ -4,10 +4,11 @@ import puppeteer from "puppeteer";
 // busqueda de articulos
 const busquedaDeArticulos = async function (req, res) {
   try {
+    let { palabra } = req.params;
     let resultados = [];
 
     // Lanzando navegador
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch({ headless: "new" });
     const page = await browser.newPage();
 
     // Navegando a la URL
@@ -18,7 +19,7 @@ const busquedaDeArticulos = async function (req, res) {
 
     // Relizo la busqueda
     const searchResultSelector = ".SearchBar-module_searchBar__Input__1kPKS";
-    await page.type(searchResultSelector, "televisor");
+    await page.type(searchResultSelector, palabra);
 
     // Ejecuto la busqueda
     const buttonResultSelector = ".SearchBar-module_searchIcon__FS7b4";
@@ -60,7 +61,7 @@ const busquedaDeArticulos = async function (req, res) {
     res.status(200).send(resultados);
   } catch (error) {
     console.log(error);
-      res.status(500).send(error);
+    res.status(500).send(error);
   }
 };
 
