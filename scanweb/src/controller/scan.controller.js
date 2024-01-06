@@ -47,24 +47,23 @@ const busquedaDeArticulos = async function (req, res) {
     for (const elementoHandle of allItems) {
       const tagName = await elementoHandle.$$(".pod-subTitle");
       const tagNameValue = await tagName[0].evaluate((e) => e.textContent);
+      const tagNameValueClear = tagNameValue.trim();
+
       const tagPrice = await elementoHandle.$$(
         ".copy10.primary.medium.jsx-2490421794.normal.line-height-22"
       );
       const tagPriceValue = await tagPrice[0].evaluate((e) => e.textContent);
+      const tagPriceValueClear = tagPriceValue.trim();
 
-      let rts = { tagNameValue, tagPriceValue };
-      resultados.push(rts);
+      let objetoFinal = { tagNameValueClear, tagPriceValueClear };
+      resultados.push(objetoFinal);
     }
-    console.log(resultados);
     await browser.close();
 
     res.status(200).send(resultados);
   } catch (error) {
-    console.log(error);
     res.status(500).send(error);
   }
 };
-
-// await busquedaDeArticulos();
 
 export { busquedaDeArticulos };
