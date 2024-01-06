@@ -58,7 +58,30 @@ const busquedaDeArticulos = async function (req, res) {
     const itemsResultados = ".jsx-1484439449.search-results-4-grid.grid-pod";
     await page.waitForSelector(itemsResultados);
 
-    
+    let allItems = await page.$$(itemsResultados);
+
+    for (const elementoHandle of allItems) {
+      // const tagName = await elementoHandle.evaluate((element) => element.outerHTML);
+      // console.log(`Etiqueta del elemento: ${tagName}`);
+      const tagName = await elementoHandle.$$(".pod-subTitle");
+      const tagNameValue = await tagName[0].evaluate((e) => e.textContent);
+
+      const tagPrice = await elementoHandle.$$(
+        ".copy10.primary.medium.jsx-2490421794.normal.line-height-22"
+      );
+      const tagPriceValue = await tagPrice[0].evaluate((e) => e.textContent);
+
+      console.log(tagNameValue, "--", tagPriceValue);
+
+      for (const secundario of tagName) {
+        let x = 0;
+        const tagsecundario = await secundario.evaluate((e) => e.textContent);
+        // console.log(`Etiqueta del elemento: ${tagsecundario}`);
+        x++;
+      }
+
+      // console.log(element1.values);
+    }
 
     let quotes = await page.evaluate(() => {
       let quoteelements = document.body.querySelectorAll(
