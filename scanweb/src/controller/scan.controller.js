@@ -1,30 +1,13 @@
 import { Scan } from "../model/scan.model.js";
 import puppeteer from "puppeteer";
 
-// tiempo de espera
-
-function waitforme(millisec) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve("");
-    }, millisec);
-  });
-}
-
-async function printy() {
-  for (let i = 0; i < 2; ++i) {
-    await waitforme(1000);
-    console.log(i);
-  }
-  console.log("Loop execution finished!)");
-}
-
 // busqueda de articulos
-
 const busquedaDeArticulos = async function (req, res) {
   try {
+    let resultados = [];
+
     // Lanzando navegador
-    const browser = await puppeteer.launch({ headless: false });
+    const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
 
     // Navegando a la URL
@@ -61,55 +44,26 @@ const busquedaDeArticulos = async function (req, res) {
     let allItems = await page.$$(itemsResultados);
 
     for (const elementoHandle of allItems) {
-      // const tagName = await elementoHandle.evaluate((element) => element.outerHTML);
-      // console.log(`Etiqueta del elemento: ${tagName}`);
       const tagName = await elementoHandle.$$(".pod-subTitle");
       const tagNameValue = await tagName[0].evaluate((e) => e.textContent);
-
       const tagPrice = await elementoHandle.$$(
         ".copy10.primary.medium.jsx-2490421794.normal.line-height-22"
       );
       const tagPriceValue = await tagPrice[0].evaluate((e) => e.textContent);
 
-      console.log(tagNameValue, "--", tagPriceValue);
-
-      for (const secundario of tagName) {
-        let x = 0;
-        const tagsecundario = await secundario.evaluate((e) => e.textContent);
-        // console.log(`Etiqueta del elemento: ${tagsecundario}`);
-        x++;
-      }
-
-      // console.log(element1.values);
+      let rts = { tagNameValue, tagPriceValue };
+      resultados.push(rts);
     }
+    console.log(resultados);
+    await browser.close();
 
-    let quotes = await page.evaluate(() => {
-      let quoteelements = document.body.querySelectorAll(
-        ".jsx-1484439449.search-results-4-grid.grid-pod"
-      );
-      console.log(quoteelements);
-      let avion = Object.values(quoteelements).map((x) => {
-        return x.textContent;
-      });
-      return avion;
-    });
-
-    console.log(quotes, quotes.length);
-
-    // Locate the full title with a unique string
-    // const textSelector = await page.waitForSelector("text/Customize and automate");
-    // const fullTitle = await textSelector?.evaluate((el) => el.textContent);
-
-    // Print the full title
-    // console.log('The title of this blog post is "%s".', fullTitle);
-
-    // await browser.close();
+    res.status(200).send(resultados);
   } catch (error) {
     console.log(error);
-    //   res.status(500).send(error);
+      res.status(500).send(error);
   }
 };
 
-await busquedaDeArticulos();
+// await busquedaDeArticulos();
 
 export { busquedaDeArticulos };
