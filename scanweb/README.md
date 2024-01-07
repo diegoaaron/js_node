@@ -1,8 +1,8 @@
-# Scan web Parimatch
+# Scan web Tottus
 
 ### 📝 Descripción
 
-Servicio que escanea la web parimatch y puede listar las apuestas de futbol a través de un API
+Servicio que escanea la web tottus y busca los productos mas baratos segun la palabra indicada.
 
 ### ⚙️ Referencias
 
