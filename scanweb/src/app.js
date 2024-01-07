@@ -7,18 +7,18 @@ import { openmongoconexion } from "../config/mongo.conexion.js";
 await openmongoconexion(urlmongoconexion);
 
 // routes
-import routerScan from "./routes/scan.routes.js";
+import routerArticulo from "./routes/articulo.routes.js";
 
 const app = express();
 
 // midleware
 app.use(express.json());
 
-app.use(routerScan);
+app.use(routerArticulo);
 
 // ruta base
 app.get("/", (req, res) => {
-  res.status(200).send(`Api up!`);
+  res.status(200).send(`API up!`);
 });
 
 export { app };

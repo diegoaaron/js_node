@@ -1,4 +1,4 @@
-import { Scan } from "../model/scan.model.js";
+import { Articulo } from "../model/articulo.model.js";
 import puppeteer from "puppeteer";
 
 // busqueda de articulos
@@ -6,6 +6,7 @@ const busquedaDeArticulos = async function (req, res) {
   try {
     let { palabra } = req.params;
     let resultados = [];
+    let fechaAcutal = new Date();
 
     // Lanzando navegador
     const browser = await puppeteer.launch({ headless: "new" });
@@ -44,6 +45,7 @@ const busquedaDeArticulos = async function (req, res) {
 
     let allItems = await page.$$(itemsResultados);
 
+    let contador = 1;
     for (const elementoHandle of allItems) {
       const tagName = await elementoHandle.$$(".pod-subTitle");
       const tagNameValue = await tagName[0].evaluate((e) => e.textContent);
@@ -55,13 +57,24 @@ const busquedaDeArticulos = async function (req, res) {
       const tagPriceValue = await tagPrice[0].evaluate((e) => e.textContent);
       const tagPriceValueClear = tagPriceValue.trim();
 
-      let objetoFinal = { tagNameValueClear, tagPriceValueClear };
+      const articulo = new Articulo({
+        numitem: contador,
+        nombre: tagNameValueClear,
+        precio: tagPriceValueClear,
+        marcatiempoapuesta: fechaAcutal,
+      });
+
+      await articulo.save();
+
+      let objetoFinal = { contador, tagNameValueClear, tagPriceValueClear };
       resultados.push(objetoFinal);
+      contador++;
     }
     await browser.close();
 
     res.status(200).send(resultados);
   } catch (error) {
+    console.log(error);
     res.status(500).send(error);
   }
 };
