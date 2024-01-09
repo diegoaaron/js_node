@@ -1,7 +1,9 @@
-// Funcion que intercambia el contenido de las variables 
-function swap(index1, index2) {
-    let tmp;
-    
+// Funcion que intercambia el contenido de las variables
+function swap(arr, index1, index2) {
+  let tmp;
+  tmp = arr[index1];
+  arr[index1] = arr[index2];
+  arr[index2] = tmp;
 }
 
 function permAlone(str) {
@@ -21,6 +23,7 @@ function permAlone(str) {
     tmp = arr[index1];
     arr[index1] = arr[index2];
     arr[index2] = tmp;
+    console.log("--2", arr);
   }
 
   // Generate arrays of permutations using the algorithm.
@@ -28,6 +31,7 @@ function permAlone(str) {
     if (int === 1) {
       // Make sure to join the characters as we create  the permutation arrays
       permutations.push(arr.join(""));
+      console.log("--1", arr);
     } else {
       for (let i = 0; i != int; ++i) {
         generate(int - 1);
@@ -48,5 +52,5 @@ function permAlone(str) {
 }
 
 // Test here.
-let xyz = permAlone("aab");
+let xyz = permAlone("abc");
 console.log(xyz);
