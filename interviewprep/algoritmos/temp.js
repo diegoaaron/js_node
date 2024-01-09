@@ -1,3 +1,9 @@
+// Funcion que intercambia el contenido de las variables 
+function swap(index1, index2) {
+    let tmp;
+    
+}
+
 function permAlone(str) {
   // Creamos una expresión regular que filtre las cadenas con palabras repetidas
   let regex = /(.)\1+/;
@@ -7,7 +13,7 @@ function permAlone(str) {
   const permutations = [];
   let tmp;
 
-  // Return 0 if str contains same character.
+  // Retornando 0 si toda la cadena tiene caracteres iguales
   if (str.match(regex) !== null && str.match(regex)[0] === str) return 0;
 
   // Function to swap variables' content.
