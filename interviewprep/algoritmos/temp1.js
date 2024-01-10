@@ -1,9 +1,9 @@
 // Funcion que intercambia el contenido de las variables
-function swap(arr, index1, index2) {
+function swap(array, index1, index2) {
   let tmp;
-  tmp = arr[index1];
-  arr[index1] = arr[index2];
-  arr[index2] = tmp;
+  tmp = array[index1];
+  array[index1] = array[index2];
+  array[index2] = tmp;
 }
 
 function permAlone(str) {
@@ -13,29 +13,19 @@ function permAlone(str) {
   // Dividiendo la cadena en un array de caracteres individuales
   const arr = str.split("");
   const permutations = [];
-  let tmp;
 
   // Retornando 0 si toda la cadena tiene caracteres iguales
   if (str.match(regex) !== null && str.match(regex)[0] === str) return 0;
 
-  // Function to swap variables' content.
-  function swap(index1, index2) {
-    tmp = arr[index1];
-    arr[index1] = arr[index2];
-    arr[index2] = tmp;
-    console.log("--2", arr);
-  }
-
-  // Generate arrays of permutations using the algorithm.
+  // Genera arrays de las permutaciones utilizando el algoritmo HEAP
   function generate(int) {
     if (int === 1) {
       // Make sure to join the characters as we create  the permutation arrays
       permutations.push(arr.join(""));
-      console.log("--1", arr);
     } else {
       for (let i = 0; i != int; ++i) {
         generate(int - 1);
-        swap(int % 2 ? 0 : i, int - 1);
+        swap(arr,int % 2 ? 0 : i, int - 1);
       }
     }
   }
@@ -48,9 +38,9 @@ function permAlone(str) {
   });
 
   // Return how many have no repetitions.
-  return filtered;
+  return filtered.length;
 }
 
 // Test here.
-let xyz = permAlone("abc");
+let xyz = permAlone("aab");
 console.log(xyz);
