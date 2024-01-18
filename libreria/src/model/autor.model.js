@@ -4,8 +4,8 @@ import { DateTime, Interval } from "luxon";
 const Schema = mongoose.Schema;
 
 const AutorSchema = new Schema({
-  nombres: { type: String, require: true, maxLength: 100 },
-  apellidos: { type: String, require: true, maxLength: 100 },
+  nombres: { type: String, required: true, maxLength: 100 },
+  apellidos: { type: String, required: true, maxLength: 100 },
   fechaNacimiento: { type: Date },
   fechaMuerte: { type: Date },
 });
